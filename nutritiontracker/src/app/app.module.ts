@@ -10,6 +10,7 @@ import { UserService } from './service/user.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { ContactpageComponent } from './contactpage/contactpage.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     UserFormComponent,
     HeaderComponent,
     FooterComponent,
-    HomepageComponent
+    HomepageComponent,
+    ContactpageComponent
   ],
   imports: [
     BrowserModule,
