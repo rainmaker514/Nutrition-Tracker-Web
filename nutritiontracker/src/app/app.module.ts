@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserService } from './service/user.service';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { ContactpageComponent } from './contactpage/contactpage.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,10 @@ import { ContactpageComponent } from './contactpage/contactpage.component';
     UserFormComponent,
     HeaderComponent,
     FooterComponent,
-    HomepageComponent,
-    ContactpageComponent
+    HomeComponent,
+    ContactComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
