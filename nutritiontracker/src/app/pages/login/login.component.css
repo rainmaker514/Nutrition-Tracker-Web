@@ -1,0 +1,11 @@
+
+.hero{
+  background-image: url('/assets/img/bg1.jpg') !important;
+  background-size: cover;
+  background-position: center center;
+}
+
+.input{
+  width: 100%;
+
+}

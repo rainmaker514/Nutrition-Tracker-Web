@@ -1,1 +1,41 @@
-<p>login works!</p>
+<section class="hero is-link is-bold is-fullheight">
+  <div class="hero-body">
+    <div class="container" style="border-radius: 25px; background: white; max-width: 500px; height: 300px;">
+      <form (ngSubmit)="submitForm()" #loginForm="ngForm">
+        <p class="title" style="color: black; text-align:center;">Login</p>
+        <!--email field-->
+        <div class="field">
+          <label class="label">Email</label>
+            <div class="control has-icons-left">
+              <input class="input is-rounded" type="email" placeholder="Email" [(ngModel)]="email" #emailInput="ngModel" required>
+                <div class="help is-error" *ngIf="emailInput.invalid && emailInput.dirty">Email required</div>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+</div>
+
+        </div>
+        <!--password field-->
+        <div class="field">
+          <label class="label">Password</label>
+            <div class="control has-icons-left">
+              <input class="input is-rounded" type="password" placeholder="Password" [(ngModel)]="password" #passwordInput="ngModel" required>
+                <div class="help is-error" *ngIf="passwordInput.invalid && passwordInput.dirty">Email required</div>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+            </div>
+        </div>
+        <!--login button-->
+        <button type="submit" class="button is-small is-primary" [disabled]="loginForm.invalid">Log In</button>
+
+        <!--forgot password link-->
+        <a href="" style="color:blue; align:right">Forgot password</a>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+
