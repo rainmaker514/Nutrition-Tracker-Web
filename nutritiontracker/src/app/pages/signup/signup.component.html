@@ -5,10 +5,58 @@
       <form (ngSubmit)="submitForm()" #loginForm="ngForm">
         <p class="title" style="color: black; text-align:center;">Sign Up</p>
         <!--firstname field-->
+        <div class="field">
+          <div class="control has-icons-left">
+          <input class="input is-rounded" type="text" name="firstname" placeholder="Firstname" [(ngModel)]="firstname" #firstnameInput="ngModel" required>
+          <div class="help is-error" *ngIf="firstnameInput.invalid && firstnameInput.dirty">Firstname required</div>
+          <span class="icon is-small is-left">
+                  <i class="fa fa-user"></i>
+                </span>
+          </div>
+        </div>
         <!--lastname field-->
+        <div class="field">
+          <div class="control has-icons-left">
+          <input class="input is-rounded" type="text" name="lastname" placeholder="Lastname" [(ngModel)]="lastname" #lastnameInput="ngModel" required>
+          <div class="help is-error" *ngIf="lastnameInput.invalid && lastnameInput.dirty">Lastname required</div>
+          <span class="icon is-small is-left">
+                  <i class="fa fa-user"></i>
+                </span>
+          </div>
+        </div>
         <!--email-->
+        <div class="field">
+          <div class="control has-icons-left">
+            <input class="input is-rounded" type="email" name="email" placeholder="Email" [(ngModel)]="email" #emailInput="ngModel" required>
+            <div class="help is-error" *ngIf="emailInput.invalid && emailInput.dirty">Email required</div>
+            <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+          </div>
+        </div>
         <!--password field-->
+        <div class="field">
+          <div class="control has-icons-left">
+            <input class="input is-rounded" type="password" name="password" placeholder="Password" [(ngModel)]="password" #passwordInput="ngModel" required>
+            <div class="help is-error" *ngIf="passwordInput.invalid && passwordInput.dirty">Password required</div>
+            <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+          </div>
+        </div>
         <!--height field-->
+        <div class="control has-icons-left">
+          <div class="select is-rounded">
+            <select [(ngModel)]="height" name="height">
+              <option class="dropdown-item" disabled selected value="undefined">Select height</option>
+              <option *ngFor="let height of heightDropDown" [ngValue]="height">{{height}}</option>
+            </select>
+          </div>
+            <div class="icon is-small is-left">
+                  <i class="fa fa-ruler-vertical"></i>
+                </div>
+          </div>
+
         <!--weight field-->
         <!--birthdate field (calendar date selector, calculate age based on selection, saving both birthdate and age)-->
         <!--activity level(dropdown)-->
@@ -20,16 +68,4 @@
     </div>
   </div>
 </section>
-<div class="field">
-  <label class="label">Name</label>
-  <div class="control">
-    <input class="input" type="text" placeholder="e.g Alex Smith">
-  </div>
-</div>
 
-<div class="field">
-  <label class="label">Email</label>
-  <div class="control">
-    <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
-  </div>
-</div>
