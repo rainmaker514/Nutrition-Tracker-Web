@@ -58,7 +58,18 @@
           </div>
 
         <!--weight field-->
+        <div class="field">
+          <div class="control has-icons-left">
+            <input class="input is-rounded" style="margin-top:2%" type="number" name="weight" placeholder="Weight" [(ngModel)]="weight"
+                   #weightInput="ngModel" required>
+            <div class="help is-error" *ngIf="weightInput.invalid && weightInput.dirty">Weight required</div>
+            <span class="icon is-small is-left" style="margin-top:2%">
+                  <i class="fa fa-weight"></i>
+                </span>
+          </div>
+        </div>
         <!--birthdate field (calendar date selector, calculate age based on selection, saving both birthdate and age)-->
+
         <!--activity level(dropdown)-->
         <!--goal(dropdown)-->
         <!--submit button-->

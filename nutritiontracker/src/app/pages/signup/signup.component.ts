@@ -12,13 +12,8 @@ export class SignupComponent implements OnInit {
   email!: string;
   password!: string;
   height!: string;
-  HEROES = [
-      {id: 1, name:'Superman'},
-      {id: 2, name:'Batman'},
-      {id: 5, name:'BatGirl'},
-      {id: 3, name:'Robin'},
-      {id: 4, name:'Flash'}
-  ];
+  weight!: number;
+
   heightDropDown: string[]=[];
   constructor() {
 
