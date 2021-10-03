@@ -18,6 +18,7 @@ export class SignupComponent implements OnInit {
   maxDate!: Date;
   birthdate!: Date;
   activityLevel!: string;
+  goal!: string;
   heightDropDown: string[]=[];
 
   constructor() {
@@ -33,18 +34,6 @@ export class SignupComponent implements OnInit {
   }
 
   submitForm(){}
-
-  /*getTodaysDate(){
-    var n =  new Date();
-    var y = n.getFullYear();
-    var m = n.getMonth() + 1;
-    var d = n.getDate();
-    this.today = y + "-" + m + "-" + d;
-    console.log(this.today);
-
-
-
-  }*/
 
   //generate array of heights for dropdown
   populateHeightArray(){
