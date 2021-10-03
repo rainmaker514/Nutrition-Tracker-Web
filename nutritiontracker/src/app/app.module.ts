@@ -15,10 +15,15 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-free/js/all.js';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,12 @@ import '@fortawesome/fontawesome-free/js/all.js';
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
-    CommonModule
+    CommonModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

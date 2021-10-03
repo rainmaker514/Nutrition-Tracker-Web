@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-pages-signup',
   templateUrl: './signup.component.html',
@@ -13,10 +14,18 @@ export class SignupComponent implements OnInit {
   password!: string;
   height!: string;
   weight!: number;
-
+  minDate!: Date;
+  maxDate!: Date;
+  birthdate!: Date;
+  activityLevel!: string;
   heightDropDown: string[]=[];
-  constructor() {
 
+  constructor() {
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+    const currentDate = new Date().getDate();
+        this.minDate = new Date(currentYear - 100, 1, 1);
+        this.maxDate = new Date(currentYear, currentMonth, currentDate);
   }
 
   ngOnInit(): void {
@@ -25,6 +34,19 @@ export class SignupComponent implements OnInit {
 
   submitForm(){}
 
+  /*getTodaysDate(){
+    var n =  new Date();
+    var y = n.getFullYear();
+    var m = n.getMonth() + 1;
+    var d = n.getDate();
+    this.today = y + "-" + m + "-" + d;
+    console.log(this.today);
+
+
+
+  }*/
+
+  //generate array of heights for dropdown
   populateHeightArray(){
     var ft = 4;
         var inch = 0;
