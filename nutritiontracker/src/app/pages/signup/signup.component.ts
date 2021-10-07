@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { Inject } from '@angular/core';
+import { User } from 'src/app/model/user';
+import { UserService } from 'src/app/service/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-pages-signup',
@@ -8,20 +13,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  firstname!: string;
-  lastname!: string;
-  email!: string;
-  password!: string;
-  height!: string;
-  weight!: number;
-  minDate!: Date;
-  maxDate!: Date;
-  birthdate!: Date;
-  activityLevel!: string;
-  goal!: string;
-  heightDropDown: string[]=[];
+  public users: User[];
+  public editUser: User;
+  public deleteUser: User;
 
-  constructor() {
+  public minDate: Date;
+  public maxDate: Date;
+  public birthdate: Date;
+  public age: number;
+
+  public heightDropDown: string[]=[];
+
+
+  constructor(private userService: UserService) {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
     const currentDate = new Date().getDate();
@@ -31,9 +35,59 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.populateHeightArray();
+    this.getUsers();
   }
 
-  submitForm(){}
+
+
+  //subtract birthdate from current date, if current month and day is greater than birth month and day, age++
+  calculateAge(){
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+    const currentDate = new Date().getDate();
+    const birthYear = this.birthdate.getFullYear();
+    const birthMonth = this.birthdate.getMonth();
+    const birthDate = this.birthdate.getDate();
+
+    this.age = currentYear as number - birthYear as number;
+
+    //checking to see if birthday passed, if so add one to age
+    if(currentMonth >= birthMonth && currentDate >= birthDate){
+      this.age++;
+    }
+  }
+
+  public getUsers(): void {
+        this.userService.findAll().subscribe(
+          (response: User[]) => {
+            this.users = response;
+            console.log(this.users);
+          },
+          (error: HttpErrorResponse) => {
+            alert(error.message);
+          }
+        );
+      }
+
+  onAddUser(addForm: NgForm): void {
+    this.calculateAge();
+
+    alert("Form sent!");
+    //add functionality that navigates user from sign up page
+    //document.getElementById('add-user-form').click();
+    this.userService.addUser(addForm.value).subscribe(
+      (response: User) => {
+        console.log(response);
+        this.getUsers();
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    );
+  }
+
 
   //generate array of heights for dropdown
   populateHeightArray(){

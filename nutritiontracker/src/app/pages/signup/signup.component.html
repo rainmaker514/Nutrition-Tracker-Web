@@ -2,14 +2,13 @@
   <div class="hero-body">
     <div class="container" style="margin-left: 0;margin-right: auto;border-radius: 25px; background: white;
     max-width: 800px; height: 1000px;">
-      <form (ngSubmit)="submitForm()" #signupForm="ngForm">
+      <form #addForm="ngForm" (ngSubmit)="onAddUser(addForm)" #signupForm="ngForm">
         <p class="title" style="color: black; text-align:center;">Sign Up</p>
         <!--firstname field-->
         <div class="field">
           <div class="control has-icons-left">
-          <input class="input is-rounded" type="text" name="firstname" placeholder="Firstname" [(ngModel)]="firstname" #firstnameInput="ngModel" required>
-          <div class="help is-error" *ngIf="firstnameInput.invalid && firstnameInput.dirty">Firstname required</div>
-          <span class="icon is-small is-left">
+          <input class="input is-rounded" type="text" name="firstname" placeholder="Firstname" id="firstname" ngModel required>
+                <span class="icon is-small is-left">
                   <i class="fa fa-user"></i>
                 </span>
           </div>
@@ -17,8 +16,8 @@
         <!--lastname field-->
         <div class="field">
           <div class="control has-icons-left">
-          <input class="input is-rounded" type="text" name="lastname" placeholder="Lastname" [(ngModel)]="lastname" #lastnameInput="ngModel" required>
-          <div class="help is-error" *ngIf="lastnameInput.invalid && lastnameInput.dirty">Lastname required</div>
+          <input class="input is-rounded" type="text" name="lastname" placeholder="Lastname" id="lastname" ngModel required>
+
           <span class="icon is-small is-left">
                   <i class="fa fa-user"></i>
                 </span>
@@ -27,8 +26,8 @@
         <!--email-->
         <div class="field">
           <div class="control has-icons-left">
-            <input class="input is-rounded" type="email" name="email" placeholder="Email" [(ngModel)]="email" #emailInput="ngModel" required>
-            <div class="help is-error" *ngIf="emailInput.invalid && emailInput.dirty">Email required</div>
+            <input class="input is-rounded" type="email" name="email" placeholder="Email" id="email" ngModel required>
+
             <span class="icon is-small is-left">
                   <i class="fa fa-envelope"></i>
                 </span>
@@ -37,8 +36,8 @@
         <!--password field-->
         <div class="field">
           <div class="control has-icons-left">
-            <input class="input is-rounded" type="password" name="password" placeholder="Password" [(ngModel)]="password" #passwordInput="ngModel" required>
-            <div class="help is-error" *ngIf="passwordInput.invalid && passwordInput.dirty">Password required</div>
+            <input class="input is-rounded" type="password" name="password" placeholder="Password" id="password" ngModel required>
+
             <span class="icon is-small is-left">
                   <i class="fa fa-lock"></i>
                 </span>
@@ -47,7 +46,7 @@
         <!--height field-->
         <div class="control has-icons-left">
           <div class="select is-rounded">
-            <select [(ngModel)]="height" name="height">
+            <select id="height" ngModel name="height">
               <option class="dropdown-item" disabled selected value="undefined">Select height</option>
               <option *ngFor="let height of heightDropDown" [ngValue]="height">{{height}}</option>
             </select>
@@ -60,9 +59,9 @@
         <!--weight field-->
         <div class="field">
           <div class="control has-icons-left">
-            <input class="input is-rounded" style="margin-top:2%" type="number" name="weight" placeholder="Weight" [(ngModel)]="weight"
-                   #weightInput="ngModel" required>
-            <div class="help is-error" *ngIf="weightInput.invalid && weightInput.dirty">Weight required</div>
+            <input class="input is-rounded" style="margin-top:2%" type="number" name="weight" placeholder="Weight"
+                   id="weight" ngModel required>
+
             <span class="icon is-small is-left" style="margin-top:2%">
                   <i class="fa fa-weight"></i>
                 </span>
@@ -75,8 +74,8 @@
 
           <mat-label>Choose a date</mat-label>
           <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" name="birthdate"
-                 [(ngModel)]="birthdate" #birthdateInput="ngModel" required>
-          <div class="help is-error" *ngIf="birthdateInput.invalid && birthdateInput.dirty">Birthdate required</div>
+                 id="birthdate" [(ngModel)]="birthdate" required>
+
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -84,7 +83,7 @@
         <!--activity level(dropdown)-->
         <div class="control has-icons-left">
           <div class="select is-rounded">
-            <select name="activityLevel" [(ngModel)]="activityLevel">
+            <select name="activityLevel" id="activityLevel" ngModel required>
               <option class="dropdown-item" disabled selected value="undefined">Select activity level</option>
               <option value="sedentary">Sedentary</option>
               <option value="light">Light</option>
@@ -99,7 +98,7 @@
         <!--goal(dropdown)-->
         <div class="control has-icons-left" style="margin-top: 2%">
           <div class="select is-rounded">
-            <select name="goal" [(ngModel)]="goal">
+            <select name="goal" id="goal" ngModel>
               <option class="dropdown-item" disabled selected value="undefined">Select goal</option>
               <option value="lose">Lose weight</option>
               <option value="maintain">Maintain weight</option>
@@ -111,7 +110,7 @@
           </div>
         </div>
         <!--submit button-->
-        <button type="submit" class="button is-medium is-primary" [disabled]="signupForm.invalid" style="margin-top:5%">Sign Up</button>
+        <button type="submit" id="add-user-form" class="button is-medium is-primary" [disabled]="signupForm.invalid" style="margin-top:5%">Sign Up</button>
       </form>
 
     </div>
