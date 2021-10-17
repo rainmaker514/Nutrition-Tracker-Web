@@ -22,6 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { UserComponent } from './pages/user/user.component';
+import { UsersComponent } from './pages/users/users.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     ContactComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    UserComponent,
+    UsersComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

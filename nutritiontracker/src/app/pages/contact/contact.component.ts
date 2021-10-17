@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  name!: string;
-  email!: string;
-  message!: string;
+  name: string;
+  email: string;
+  message: string;
 
   constructor() {
 
@@ -19,9 +19,9 @@ export class ContactComponent implements OnInit {
   }
 
   submitForm(){
-  const message = `My name is ${this.name}`;
-  //alert('Message sent!');
-  alert(message);
+
+  alert('Message sent!');
+
 
   //http or api call to send the data
   }
