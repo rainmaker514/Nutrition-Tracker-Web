@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="aeddeaef-587f-41b5-b677-42faf9fcbc83" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nutritiontracker/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nutritiontracker/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutritiontracker/src/app/pages/contact/contact.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/nutritiontracker/src/app/pages/contact/contact.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutritiontracker/src/app/pages/contact/contact.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nutritiontracker/src/app/pages/contact/contact.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutritiontracker/src/app/service/contact.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nutritiontracker/src/app/service/contact.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

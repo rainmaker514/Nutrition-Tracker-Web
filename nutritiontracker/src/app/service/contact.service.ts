@@ -13,8 +13,8 @@ export class ContactService {
 
   constructor(private http: HttpClient) { }
 
-  //leave here for testing, not needed because normal users shouldn't be able to see messages from other users. delete this method from here and backend
-  public findAll(): Observable<Contact[]> { return this.http.get<Contact[]>(`${this.contactUrl}/contact/all`); }
+  //leave here for testing
+  //public findAll(): Observable<Contact[]> { return this.http.get<Contact[]>(`${this.contactUrl}/contact/all`); }
 
   public addContact(contact: Contact): Observable<Contact> {
     return this.http.post<Contact>(`${this.contactUrl}/contact/add`, contact);

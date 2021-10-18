@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Inject } from '@angular/core';
+import { Contact } from 'src/app/model/contact';
+import { ContactService } from 'src/app/service/contact.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-pages-contact',
@@ -6,23 +12,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  name: string;
-  email: string;
-  message: string;
 
-  constructor() {
+  constructor(private contactService: ContactService) { }
 
-
-    }
+  public contacts: Contact[];
 
   ngOnInit(): void {
+    //leave here for testing
+    //this.getContacts();
   }
 
-  submitForm(){
+  //leave here for testing
+  /*public getContacts(): void {
+          this.contactService.findAll().subscribe(
+            (response: Contact[]) => {
+              this.contacts = response;
+              console.log(this.contacts);
+            },
+            (error: HttpErrorResponse) => {
+              alert(error.message);
+            }
+          );
+        }*/
 
-  alert('Message sent!');
+  onAddContact(addForm: NgForm): void{
 
+    alert('Message sent!');
 
-  //http or api call to send the data
+    this.contactService.addContact(addForm.value).subscribe(
+          (response: Contact) => {
+            console.log(response);
+            this.getContacts();
+            addForm.reset();
+          },
+          (error: HttpErrorResponse) => {
+            alert(error.message);
+            addForm.reset();
+          }
+        );
   }
 }
