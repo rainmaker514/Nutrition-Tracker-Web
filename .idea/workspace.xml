@@ -2,67 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aeddeaef-587f-41b5-b677-42faf9fcbc83" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/.browserslistrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/angular.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/karma.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/app/app-routing.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/app/app.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/app/app.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/app/app.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/app/app.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/app/app.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/app/model/user.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/app/model/user.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/app/service/user.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/app/service/user.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/assets/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/environments/environment.prod.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/environments/environment.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/polyfills.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/styles.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/src/test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/tsconfig.app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nutrition-Tracker-Web/tsconfig.spec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/.browserslistrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/angular.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/karma.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/app/app-routing.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/app/app.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/app/app.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/app/app.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/app/app.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/app/app.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/assets/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/environments/environment.prod.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/environments/environment.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/polyfills.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/src/test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/tsconfig.app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularclient/tsconfig.spec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nutritiontracker/src/app/service/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nutritiontracker/src/app/service/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nutritiontracker/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nutritiontracker/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutritiontracker/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nutritiontracker/src/app/app.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

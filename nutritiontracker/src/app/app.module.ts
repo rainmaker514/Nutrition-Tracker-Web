@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserService } from './service/user.service';
+import { ContactService } from './service/contact.service';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -52,7 +53,8 @@ import { AboutComponent } from './pages/about/about.component';
     MatNativeDateModule,
     MatInputModule
   ],
-  providers: [UserService],
+  providers: [UserService, ContactService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {
