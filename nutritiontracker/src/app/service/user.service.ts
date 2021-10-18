@@ -10,26 +10,16 @@ export class UserService {
   private usersUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) {
-    //this.usersUrl = 'http://localhost:8080/users';
+
   }
 
-  public findAll(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.usersUrl}/all`);
-  }
+  public findAll(): Observable<User[]> { return this.http.get<User[]>(`${this.usersUrl}/users/all`); }
 
-  public addUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.usersUrl}/add`, user);
-  }
+  public addUser(user: User): Observable<User> { return this.http.post<User>(`${this.usersUrl}/users/add`, user); }
 
-  public updateUser(user: User): Observable<User> {
-    return this.http.put<User>(`${this.usersUrl}/update`, user);
-  }
+  public updateUser(user: User): Observable<User> { return this.http.put<User>(`${this.usersUrl}/users/update`, user); }
 
-  public deleteUser(id: number): Observable<void> {
-      return this.http.delete<void>(`${this.usersUrl}/delete/${id}`);
-    }
+  public deleteUser(id: number): Observable<void> { return this.http.delete<void>(`${this.usersUrl}/users/delete/${id}`); }
 
-  /*public save(user: User) {
-    return this.http.post<User>(this.usersUrl, user);
-  }*/
+
 }
