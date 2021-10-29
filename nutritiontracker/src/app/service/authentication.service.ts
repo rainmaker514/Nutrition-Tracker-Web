@@ -40,4 +40,8 @@ export class AuthenticationService {
       localStorage.setItem('user', JSON.stringify(user));
     }
 
+    getUserFromLocalCache(): User {
+      return JSON.parse(localStorage.getItem('user'));
+    }
+
 }
