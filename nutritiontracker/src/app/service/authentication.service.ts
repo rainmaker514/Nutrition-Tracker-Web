@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { User } from '../model/user';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ import { User } from '../model/user';
 export class AuthenticationService {
 
   private host = environment.userUrl;
+  private token: string;
+  private loggedInEmail: string;
 
   constructor(private http: HttpClient) { }
 
@@ -22,5 +25,14 @@ export class AuthenticationService {
 
   logout(): void {
         this.token = null;
+        this.loggedInEmail = null;
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        localStorage.removeItem('users');
     }
+
+    saveToken(token: string): void {
+      this.token = token;
+      localStorage.setItem('token', token);
+  }
 }
