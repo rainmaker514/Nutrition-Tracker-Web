@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../model/user';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { User } from '../model/user';
+import { Observable } from 'rxjs/internal/Observable';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable()
 export class UserService {
@@ -11,7 +12,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
- findAll(): Observable<User[]> {
+ findAll(): Observable<User[] | HttpErrorResponse> {
     return this.http.get<User[]>(`${this.host}/users/all`);
  }
 
