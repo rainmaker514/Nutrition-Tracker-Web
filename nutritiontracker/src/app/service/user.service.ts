@@ -16,13 +16,17 @@ export class UserService {
     return this.http.get<User[]>(`${this.host}/users/all`);
  }
 
- addUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.host}/users/add`, user);
+ addUser(formData: FormData): Observable<User> {
+    return this.http.post<User>(`${this.host}/users/add`, formData);
  }
 
- updateUser(user: User): Observable<User> {
-    return this.http.put<User>(`${this.host}/users/update`, user);
+ updateUser(formData: FormData): Observable<User> {
+    return this.http.put<User>(`${this.host}/users/update`, formData);
  }
+
+  resetPassword(email: string): Observable<any | HttpErrorResponse> {
+   return this.http.get(`${this.host}/users/reset-password/${email}`);
+}
 
  deleteUser(id: number): Observable<void> {
     return this.http.delete<void>(`${this.host}/users/delete/${id}`);
