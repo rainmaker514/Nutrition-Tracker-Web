@@ -23,7 +23,7 @@ export class SignupComponent implements OnInit {
     //this.getUsers();
   }
 
-  public getUsers(): void {
+  /*public getUsers(): void {
         this.userService.findAll().subscribe(
           (response: User[]) => {
             this.users = response;
@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
             alert(error.message);
           }
         );
-      }
+      }*/
 
   onAddUser(addForm: NgForm): void {
     alert("Form sent!");
@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit {
     this.userService.addUser(addForm.value).subscribe(
       (response: User) => {
         console.log(response);
-        this.getUsers();
+        //this.getUsers();
         addForm.reset();
       },
       (error: HttpErrorResponse) => {

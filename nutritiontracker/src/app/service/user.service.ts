@@ -34,5 +34,12 @@ export class UserService {
 
  addUsersToLocalCache(users: User[]): void {
    localStorage.setItem('users', JSON.stringify(users));
-}
+ }
+
+ getUsersFromLocalCache(): User[] {
+   if(localStorage.getItem('users')){
+      return JSON.parse(localStorage.getItem('users'));
+   }
+   return null;
+ }
 }
