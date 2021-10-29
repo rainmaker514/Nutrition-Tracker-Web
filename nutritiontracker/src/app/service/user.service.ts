@@ -7,19 +7,25 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class UserService {
 
-  private usersUrl = environment.baseUrl;
+  private host = environment.userUrl;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
 
-  }
+ findAll(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.host}/users/all`);
+ }
 
-  public findAll(): Observable<User[]> { return this.http.get<User[]>(`${this.usersUrl}/users/all`); }
+ addUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.host}/users/add`, user);
+ }
 
-  public addUser(user: User): Observable<User> { return this.http.post<User>(`${this.usersUrl}/users/add`, user); }
+ updateUser(user: User): Observable<User> {
+    return this.http.put<User>(`${this.host}/users/update`, user);
+ }
 
-  public updateUser(user: User): Observable<User> { return this.http.put<User>(`${this.usersUrl}/users/update`, user); }
-
-  public deleteUser(id: number): Observable<void> { return this.http.delete<void>(`${this.usersUrl}/users/delete/${id}`); }
+ deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.host}/users/delete/${id}`);
+ }
 
 
 }

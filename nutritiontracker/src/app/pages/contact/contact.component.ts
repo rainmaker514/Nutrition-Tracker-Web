@@ -42,7 +42,7 @@ export class ContactComponent implements OnInit {
     this.contactService.addContact(addForm.value).subscribe(
           (response: Contact) => {
             console.log(response);
-            this.getContacts();
+            //this.getContacts();
             addForm.reset();
           },
           (error: HttpErrorResponse) => {

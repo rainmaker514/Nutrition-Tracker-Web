@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.populateHeightArray();
-    this.getUsers();
+    //this.getUsers();
   }
 
   public getUsers(): void {

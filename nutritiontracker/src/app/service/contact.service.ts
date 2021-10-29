@@ -9,14 +9,14 @@ import { environment } from 'src/environments/environment';
 })
 export class ContactService {
 
-  private contactUrl = environment.contactUrl;
+  private host = environment.contactUrl;
 
   constructor(private http: HttpClient) { }
 
   //leave here for testing
   //public findAll(): Observable<Contact[]> { return this.http.get<Contact[]>(`${this.contactUrl}/contact/all`); }
 
-  public addContact(contact: Contact): Observable<Contact> {
-    return this.http.post<Contact>(`${this.contactUrl}/contact/add`, contact);
+  addContact(contact: Contact): Observable<Contact> {
+    return this.http.post<Contact>(`${this.host}/contact/add`, contact);
     }
 }

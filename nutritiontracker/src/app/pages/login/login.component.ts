@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-pages-login',
@@ -7,13 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   constructor() { }
-  email!: string;
-  password!: string;
+
+  email: string;
+  password: string;
 
   ngOnInit(): void {
   }
 
-  submitForm(){
+  onLogin(loginForm: NgForm){
 
   }
 }
