@@ -26,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import { UserComponent } from './pages/user/user.component';
 import { UsersComponent } from './pages/users/users.component';
 import { AboutComponent } from './pages/about/about.component';
+import { CustomHttpResponse } from './model/custom-http-response';
 
 @NgModule({
   declarations: [
