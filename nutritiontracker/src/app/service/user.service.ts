@@ -43,7 +43,19 @@ export class UserService {
    return null;
  }
 
- createUserFormData(): User[] {
-   
+ createUserFormData(loggedInEmail: string, user: User): FormData {
+   const formData = new FormData();
+   formData.append('currentEmail', loggedInEmail);
+   formData.append('firstname', user.firstname);
+   formData.append('lastname', user.lastname);
+   formData.append('email', user.email);
+   formData.append('height', user.height);
+   formData.append('weight', JSON.stringify(user.weight));
+   formData.append('age', JSON.stringify(user.age));
+   formData.append('activityLevel', user.activityLevel);
+   formData.append('goal', user.goal);
+   formData.append('role', user.role);
+
+   return formData;
  }
 }
