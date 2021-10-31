@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserService } from './service/user.service';
 import { ContactService } from './service/contact.service';
@@ -26,7 +26,8 @@ import { MatInputModule } from '@angular/material/input';
 import { UserComponent } from './pages/user/user.component';
 import { UsersComponent } from './pages/users/users.component';
 import { AboutComponent } from './pages/about/about.component';
-import { CustomHttpResponse } from './model/custom-http-response';
+import { AuthenticationService } from './service/authentication.service';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { CustomHttpResponse } from './model/custom-http-response';
     MatNativeDateModule,
     MatInputModule
   ],
-  providers: [UserService, ContactService],
+  providers: [UserService, ContactService, AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
 
   bootstrap: [AppComponent]
 })
