@@ -11,8 +11,8 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 export class AuthenticationService {
 
   public host = environment.userUrl;
-  private token: string;
-  private loggedInEmail: string;
+  private token!: string;
+  private loggedInEmail!: string;
   private jwtHelper = new JwtHelperService();
 
   constructor(private http: HttpClient) { }
@@ -54,7 +54,7 @@ export class AuthenticationService {
       return this.token;
     }
 
-    isLoggedIn(): boolean {
+    isUserLoggedIn(): boolean {
       this.loadToken();
       if(this.token != null && this.token !== ''){
         if(this.jwtHelper.decodeToken(this.token).sub != null || ''){
