@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { User } from '../model/user';
+import { User } from '../models/user';
 import { Observable } from 'rxjs/internal/Observable';
 import { JwtHelperService } from "@auth0/angular-jwt";
 
