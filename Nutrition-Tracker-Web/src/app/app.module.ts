@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { UserComponent } from './pages/user/user.component';
+import { UsersComponent } from './pages/users/users.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SignupComponent } from './pages/signup/signup.component';
     ContactComponent,
     HomeComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    UserComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule, FormsModule
