@@ -23,6 +23,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { AboutComponent } from './pages/about/about.component';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { NotificationModule } from './notification.module';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     FontAwesomeModule,
     CommonModule,
     BrowserAnimationsModule,
+    NotificationModule
   ],
   providers: [UserService, ContactService, AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
