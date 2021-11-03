@@ -9,7 +9,6 @@ import { UserService } from './services/user.service';
 import { ContactService } from './services/contact.service';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './pages/home/home.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -33,7 +32,6 @@ import { NotificationService } from './services/notification.service';
     HeaderComponent,
     AboutComponent,
     ContactComponent,
-    HomeComponent,
     LoginComponent,
     SignupComponent,
     UserComponent,
