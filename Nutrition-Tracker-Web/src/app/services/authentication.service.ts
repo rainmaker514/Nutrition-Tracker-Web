@@ -11,18 +11,19 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 export class AuthenticationService {
 
   public host = environment.userUrl;
-  private token!: string;
-  private loggedInEmail!: string;
+  private token: string;
+  private loggedInEmail: string;
   private jwtHelper = new JwtHelperService();
 
   constructor(private http: HttpClient) { }
 
-  login(user: User): Observable<HttpResponse<User> | HttpErrorResponse> {
+  login(user: User): Observable<HttpResponse<User>> {
+    
     return this.http.post<User>(`${this.host}/users/login`, user, {observe: 'response'});
   }
 
-  register(user: User): Observable<User | HttpErrorResponse> {
-      return this.http.post<User | HttpErrorResponse>(`${this.host}/users/signup`, user);
+  register(user: User): Observable<User> {
+      return this.http.post<User>(`${this.host}/users/signup`, user);
   }
 
   logout(): void {
@@ -35,6 +36,7 @@ export class AuthenticationService {
 
     saveToken(token: string): void {
       this.token = token;
+      console.log("hi");
       localStorage.setItem('token', token);
     }
 

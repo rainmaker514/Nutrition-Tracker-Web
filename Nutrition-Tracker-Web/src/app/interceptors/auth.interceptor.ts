@@ -14,13 +14,13 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authenticationService: AuthenticationService) {}
   //intercepts http request and adds header with token to request so paths that require login wont fail
   intercept(httpRequest: HttpRequest<any>, httpHandler: HttpHandler): Observable<HttpEvent<any>> {
-    if(httpRequest.url.includes(`${this.authenticationService.host}/user/login`)){
+    if(httpRequest.url.includes(`${this.authenticationService.host}/users/login`)){
       return httpHandler.handle(httpRequest);
     }
-    if(httpRequest.url.includes(`${this.authenticationService.host}/user/signup`)){
+    if(httpRequest.url.includes(`${this.authenticationService.host}/users/signup`)){
       return httpHandler.handle(httpRequest);
     }
-    if(httpRequest.url.includes(`${this.authenticationService.host}/user/reset-password`)){
+    if(httpRequest.url.includes(`${this.authenticationService.host}/users/reset-password`)){
       return httpHandler.handle(httpRequest);
     }
     this.authenticationService.loadToken();

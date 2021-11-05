@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.authenticationService.login(user).subscribe(
         (response: HttpResponse<User>) => {
           const token = response.headers.get(HeaderType.JWT_TOKEN);
+          
           this.authenticationService.saveToken(token);
           this.authenticationService.addUserToLocalCache(response.body);
           this.router.navigateByUrl('/user');
@@ -53,11 +54,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     );
   }
 
-  private sendErrorNotification(notificationType: NotificationType, message: string) {
+  private sendErrorNotification(notificationType: NotificationType, message: string): void {
     if(message){
       this.notificationService.notify(notificationType, message);
     }else{
-      this.notificationService.notify(notificationType, 'AN ERROR OCCUREE. PLEASE TRY AGAIN.');
+      this.notificationService.notify(notificationType, 'AN ERROR OCCURED. PLEASE TRY AGAIN.');
     }
   }
 }
