@@ -1,40 +1,46 @@
-<section class="hero is-link is-bold is-fullheight">
-    <div class="hero-body">
-      <div class="container" style="border-radius: 25px; background: white; max-width: 500px; height: 300px;">
-        <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value)">
-          <p class="title" style="color: black; text-align:center;">Login</p>
-          <!--email field-->
-          <div class="field">
-            <label class="label">Email</label>
+<div class="hero is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-4">
+          <form class="box" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value)">
+            <div class="field">
+              <label class="label">Email</label>
               <div class="control has-icons-left">
                 <input class="input is-rounded" type="email" name="email" placeholder="Email" ngModel #emailInput="ngModel" required>
-                  <div class="help is-error" *ngIf="emailInput.invalid && emailInput.dirty">Email required</div>
-                  <span class="icon is-small is-left">
-                    <i class="fa fa-envelope"></i>
-                  </span>
-  </div>
-  
-          </div>
-          <!--password field-->
-          <div class="field">
-            <label class="label">Password</label>
+                <span class="help is-error" *ngIf="emailInput.invalid && emailInput.touched">Email required</span>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Password</label>
               <div class="control has-icons-left">
                 <input class="input is-rounded" type="password" name="password" placeholder="Password" ngModel #passwordInput="ngModel" required>
-                  <div class="help is-error" *ngIf="passwordInput.invalid && passwordInput.dirty">Password required</div>
-                  <span class="icon is-small is-left">
-                    <i class="fa fa-lock"></i>
-                  </span>
+                <span class="help is-error" *ngIf="passwordInput.invalid && passwordInput.touched">Password required</span>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
               </div>
-          </div>
-          <!--login button-->
-          <button type="submit" class="button is-small is-primary" [disabled]="loginForm.invalid">Log In</button>
-  
-          <!--forgot password link-->
-         <a href="" style="color:blue;align:right">Forgot password</a>
-        </form>
+            </div>
+            <div class="field">
+              <button type="submit" class="button is-small is-primary" [disabled]="loginForm.invalid">Log In</button>
+            </div>
+            <div class="field">
+              <a href="" style="text-decoration: underline;">Forgot password</a>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
+
+          
+          
+  
+      
   
   
   

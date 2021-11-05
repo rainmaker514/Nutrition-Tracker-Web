@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
   onLogOut(): void{
     this.authenticationService.logout();
     this.router.navigateByUrl('/login');
-    this.sendNotification(NotificationType.SUCCESS, "You've been logged out");
+    this.sendNotification(NotificationType.SUCCESS, "You've been logged out.");
   }
 
   private sendNotification(notificationType: NotificationType, message: string): void {

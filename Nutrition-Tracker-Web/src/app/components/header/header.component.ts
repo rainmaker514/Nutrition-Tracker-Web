@@ -11,5 +11,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
+  onClick(){
+    const navbarMenu = document.querySelector('#nav-links');
 
+
+    navbarMenu.classList.toggle('is-active');
+
+  }
 }

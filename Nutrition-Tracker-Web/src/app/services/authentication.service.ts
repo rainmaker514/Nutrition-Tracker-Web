@@ -36,7 +36,6 @@ export class AuthenticationService {
 
     saveToken(token: string): void {
       this.token = token;
-      console.log("hi");
       localStorage.setItem('token', token);
     }
 
