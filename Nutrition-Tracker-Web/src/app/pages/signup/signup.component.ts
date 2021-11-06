@@ -3,6 +3,11 @@ import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { faRulerVertical } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faWeight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-pages-signup',
@@ -13,6 +18,11 @@ export class SignupComponent implements OnInit {
 
   public users: User[];
   public heightDropDown: string[] = [];
+  faEnvelope = faEnvelope;
+  faLock = faLock;
+  faRuler = faRulerVertical;
+  faUser = faUser;
+  faWeight = faWeight;
 
   constructor(private userService: UserService) {}
 
@@ -34,7 +44,6 @@ export class SignupComponent implements OnInit {
       }*/
 
   onAddUser(addForm: NgForm): void {
-    alert("Form sent!");
 
     //add functionality that navigates user from sign up page
     this.userService.addUser(addForm.value).subscribe(
@@ -70,4 +79,5 @@ export class SignupComponent implements OnInit {
           this.heightDropDown.push(ft + "\'" + inch++ + "\"");
         }
   }
+
 }

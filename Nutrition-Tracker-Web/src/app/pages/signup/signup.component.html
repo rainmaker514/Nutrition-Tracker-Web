@@ -1,49 +1,91 @@
-<section class="hero is-link is-bold is-fullheight">
-    <div class="hero-body">
-      <div class="container" style="margin-left: 0;margin-right: auto;border-radius: 25px; background: white;
-      max-width: 300px; height: 650px;">
-        <form #addForm="ngForm" (ngSubmit)="onAddUser(addForm)">
-          <p class="title" style="color: black; text-align:center;margin-top:2%">Sign Up</p>
-          <!--firstname field-->
-          <div class="field">
-            <div class="control has-icons-left">
-            <input class="input is-rounded" style="width:250px" type="text" name="firstname" placeholder="Firstname" id="firstname" ngModel required>
-                  <span class="icon is-small is-left">
-                    <i class="fa fa-user"></i>
-                  </span>
+<div class="hero is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-4">
+          <form class="box" #addForm="ngForm" (ngSubmit)="onAddUser(addForm)">
+            <div class="field">
+              <label class="label">Firstname</label>
+              <div class="control has-icons-left">
+                <input class="input is-rounded" type="text" name="firstname" placeholder="ex. John" #firstnameInput="ngModel" ngModel required>
+                <span class="help is-error" *ngIf="firstnameInput.invalid && firstnameInput.touched">Firstname required</span>
+                <span class="icon is-small is-left">
+                  <fa-icon [icon]="faUser"></fa-icon>
+                </span>
+              </div>
             </div>
-          </div>
-          <!--lastname field-->
-          <div class="field">
-            <div class="control has-icons-left">
-            <input class="input is-rounded" style="width:250px" type="text" name="lastname" placeholder="Lastname" id="lastname" ngModel required>
-  
-            <span class="icon is-small is-left">
-                    <i class="fa fa-user"></i>
-                  </span>
+            <div class="field">
+              <label class="label">Lastname</label>
+              <div class="control has-icons-left">
+                <input class="input is-rounded" type="text" name="lastname" placeholder="ex. Smith" ngModel #lastnameInput="ngModel" required>
+                <span class="help is-error" *ngIf="lastnameInput.invalid && lastnameInput.touched">Lastname required</span>
+                <span class="icon is-small is-left">
+                  <fa-icon [icon]="faUser"></fa-icon>
+                </span>
+              </div>
             </div>
-          </div>
-          <!--email-->
-          <div class="field">
-            <div class="control has-icons-left">
-              <input class="input is-rounded" style="width:250px" type="email" name="email" placeholder="Email" id="email" ngModel required>
-  
-              <span class="icon is-small is-left">
-                    <i class="fa fa-envelope"></i>
-                  </span>
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control has-icons-left">
+                <input class="input is-rounded" type="email" name="email" placeholder="ex. johnsmith@email.com" #emailInput="ngModel" ngModel required>
+                <span class="help is-error" *ngIf="emailInput.invalid && emailInput.touched">Email required</span>
+                <span class="icon is-small is-left">
+                  <fa-icon [icon]="faEnvelope"></fa-icon>
+                </span>
+              </div>
             </div>
-          </div>
-          <!--password field-->
-          <div class="field">
-            <div class="control has-icons-left">
-              <input class="input is-rounded" style="width:250px" type="password" name="password" placeholder="Password" id="password" ngModel required>
-  
-              <span class="icon is-small is-left">
-                    <i class="fa fa-lock"></i>
-                  </span>
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control has-icons-left">
+                <input class="input is-rounded" type="password" name="password" #passwordInput="ngModel" ngModel required>
+                <span class="help is-error" *ngIf="passwordInput.invalid && passwordInput.touched">Password required</span>
+                <span class="icon is-small is-left">
+                  <fa-icon [icon]="faLock"></fa-icon>
+                </span>
+              </div>
             </div>
-          </div>
-          <!--height field-->
+            <div class="field">
+              <label class="label">Height</label>
+              <div class="control has-icons-left">
+                <div class="select is-rounded">
+                  <select id="height" ngModel name="height" style="width:250px">
+                    <option class="dropdown-item" selected disabled value="">Select height</option>
+                    <option *ngFor="let height of heightDropDown" [ngValue]="height">{{height}}</option>
+                  </select>
+                </div>
+                <span class="icon is-small is-left">
+                  <fa-icon [icon]="faRuler"></fa-icon>>
+                </span>
+              </div>
+            </div>
+            <label class="label">Weight</label>
+            <div class="field has-addons">
+              <div class="control has-icons-left">
+                <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" class="input is-rounded" type="number" name="weight" placeholder="ex. 130lbs" ngModel #weightInput="ngModel" required> 
+                <span class="help is-error" style="color:red"*ngIf="weightInput.invalid && weightInput.touched">Weight required</span>
+                <span class="icon is-small is-left">
+                  <fa-icon [icon]="faWeight"></fa-icon>
+                </span>
+              </div>
+              <p class="control">
+                <a class="button is-static">lbs</a>
+              </p>
+            </div>
+            <div class="field">
+              <button type="submit" class="button is-small is-primary" [disabled]="addForm.invalid">Sign Up</button>
+            </div>
+            <div class="field">
+              <a href="" style="text-decoration: underline;">Forgot password</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+          
+          <!--height field
           <div class="control has-icons-left">
             <div class="select is-rounded">
               <select id="height" ngModel name="height" style="width:250px">
@@ -56,7 +98,7 @@
                   </div>
             </div>
   
-          <!--weight field-->
+          <!--weight field
           <div class="field">
             <div class="control has-icons-left">
               <input class="input is-rounded" style="margin-top:2%; width:250px" type="number" name="weight" placeholder="Weight"
@@ -68,7 +110,7 @@
             </div>
           </div>
   
-          <!--age field-->
+          <!--age field
           <div class="field">
             <div class="control has-icons-left">
               <input class="input is-rounded" style="width: 250px" type="number" name="age" placeholder="Age"
@@ -80,7 +122,7 @@
             </div>
           </div>
   
-          <!--activity level(dropdown)-->
+          <!--activity level(dropdown)
           <div class="control has-icons-left">
             <div class="select is-rounded">
               <select name="activityLevel" style="width:250px" id="activityLevel" ngModel required>
@@ -95,7 +137,7 @@
               <i class="fa fa-dumbbell"></i>
             </div>
           </div>
-          <!--goal(dropdown)-->
+          <!--goal(dropdown)
           <div class="control has-icons-left" style="margin-top: 2%">
             <div class="select is-rounded">
               <select name="goal" id="goal" ngModel style="width:250px">
@@ -109,12 +151,13 @@
               <i class="fa fa-clipboard-list"></i>
             </div>
           </div>
-          <!--submit button-->
+          <!--submit button
           <button type="submit" id="add-user-form" class="button is-medium is-primary" [disabled]="addForm.invalid" style="margin-top:5%">Sign Up</button>
         </form>
   
       </div>
     </div>
-  </section>
+  </section> 
   
+-->
   

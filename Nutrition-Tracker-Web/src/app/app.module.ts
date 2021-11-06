@@ -14,8 +14,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faLock } from '@fortawesome/free-solid-svg-icons';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserComponent } from './pages/user/user.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -53,6 +52,6 @@ import { NotificationService } from './services/notification.service';
 export class AppModule { 
 
   constructor(){
-    library.add(faEnvelope, faLock);
+    
   }
 }
