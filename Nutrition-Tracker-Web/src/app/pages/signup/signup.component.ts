@@ -8,6 +8,10 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faRulerVertical } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faWeight } from '@fortawesome/free-solid-svg-icons';
+import { faHourglass } from '@fortawesome/free-solid-svg-icons';
+import { faDumbbell } from '@fortawesome/free-solid-svg-icons';
+import { faClipboard } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-pages-signup',
@@ -23,6 +27,9 @@ export class SignupComponent implements OnInit {
   faRuler = faRulerVertical;
   faUser = faUser;
   faWeight = faWeight;
+  faHourglass = faHourglass;
+  faDumbbell = faDumbbell;
+  faClipboard = faClipboard;
 
   constructor(private userService: UserService) {}
 
