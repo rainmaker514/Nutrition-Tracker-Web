@@ -24,6 +24,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { NotificationModule } from './notification.module';
 import { NotificationService } from './services/notification.service';
 import { MealPlannerComponent } from './pages/meal-planner/meal-planner.component';
+import { MacroCalculatorComponent } from './pages/macro-calculator/macro-calculator.component';
+import { CalorieCalculatorComponent } from './pages/calorie-calculator/calorie-calculator.component';
+import { HealthCalculatorComponent } from './pages/health-calculator/health-calculator.component';
+import { ProgressComponent } from './pages/progress/progress.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ import { MealPlannerComponent } from './pages/meal-planner/meal-planner.componen
     SignupComponent,
     UserComponent,
     UsersComponent,
-    MealPlannerComponent
+    MealPlannerComponent,
+    MacroCalculatorComponent,
+    CalorieCalculatorComponent,
+    HealthCalculatorComponent,
+    ProgressComponent
   ],
   imports: [
     BrowserModule,
