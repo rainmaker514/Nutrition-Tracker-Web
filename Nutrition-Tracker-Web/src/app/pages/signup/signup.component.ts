@@ -24,7 +24,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class SignupComponent implements OnInit, OnDestroy {
 
   public users: User[];
-  public heightDropDown: string[] = [];
+  //public heightDropDown: string[] = [];
   faEnvelope = faEnvelope;
   faLock = faLock;
   faRuler = faRulerVertical;
@@ -44,7 +44,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     if(this.authenticationService.isUserLoggedIn()){
       this.router.navigateByUrl('/user');
     }
-    this.populateHeightArray();
+    //this.populateHeightArray();
     
   }
 
@@ -66,7 +66,7 @@ export class SignupComponent implements OnInit, OnDestroy {
 
 
   //generate array of heights for dropdown
-  populateHeightArray(){
+  /*populateHeightArray(){
     var ft = 4;
         var inch = 0;
 
@@ -83,6 +83,6 @@ export class SignupComponent implements OnInit, OnDestroy {
 
           this.heightDropDown.push(ft + "\'" + inch++ + "\"");
         }
-  }
+  }*/
 
 }

@@ -14,13 +14,27 @@
   <!--menu-->
     <div class="navbar-menu" id="nav-links">
       <div class="navbar-start">
-        <a class="navbar-item" routerLink="/contact">Contact</a>
-        <a class="navbar-item" routerLink="/about">About</a>
-  
+        <div class="navbar-item">
+          <a  class="navbar-link is-arrowless" routerLink="/contact">Contact</a>
+        </div>
+        <div class="navbar-item">
+          <a class="navbar-link is-arrowless" routerLink="/about">About</a>
+        </div>
       </div>
       <div class="navbar-end">
-        <a class="navbar-item" routerLink="/login">Login</a>
-        <a class="navbar-item" routerLink="/signup">Sign Up</a>
+        <div class="navbar-item">
+          <a *ngIf="!isLoggedIn" class="navbar-link is-arrowless" routerLink="/login">Login</a>
+        </div>
+        <div class="navbar-item">
+          <a *ngIf="!isLoggedIn" class="navbar-link is-arrowless" routerLink="/signup">Sign Up</a>
+        </div>
+        <div class="navbar-item">
+          <a *ngIf="isLoggedIn" class="navbar-link is-arrowless" routerLink="/user">
+            <span class="icon is-small">
+              <fa-icon [icon]="faUserCircle"></fa-icon>
+            </span>
+          </a>
+        </div>
       </div>
     </div>
   

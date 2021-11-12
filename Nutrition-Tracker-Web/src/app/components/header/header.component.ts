@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private authenticationService: AuthenticationService) { }
+  
+  isLoggedIn = false;
+  faUserCircle = faUserCircle;
 
   ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if(event.constructor.name === "NavigationEnd"){
+        this.isLoggedIn = this.authenticationService.isUserLoggedIn();
+      }
+    })
   }
   
   onClick(){
