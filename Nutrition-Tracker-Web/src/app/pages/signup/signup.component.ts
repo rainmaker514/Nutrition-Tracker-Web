@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -11,6 +11,9 @@ import { faWeight } from '@fortawesome/free-solid-svg-icons';
 import { faHourglass } from '@fortawesome/free-solid-svg-icons';
 import { faDumbbell } from '@fortawesome/free-solid-svg-icons';
 import { faClipboard } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 
 @Component({
@@ -18,7 +21,7 @@ import { faClipboard } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
 
   public users: User[];
   public heightDropDown: string[] = [];
@@ -31,37 +34,32 @@ export class SignupComponent implements OnInit {
   faDumbbell = faDumbbell;
   faClipboard = faClipboard;
 
-  constructor(private userService: UserService) {}
+  constructor(private notificationService: NotificationService, private userService: UserService, private authenticationService: AuthenticationService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.populateHeightArray();
-    //this.getUsers();
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
   }
 
-  /*public getUsers(): void {
-        this.userService.findAll().subscribe(
-          (response: User[]) => {
-            this.users = response;
-            console.log(this.users);
-          },
-          (error: HttpErrorResponse) => {
-            alert(error.message);
-          }
-        );
-      }*/
+  ngOnInit(): void {
+    if(this.authenticationService.isUserLoggedIn()){
+      this.router.navigateByUrl('/user');
+    }
+    this.populateHeightArray();
+    
+  }
 
-  onAddUser(addForm: NgForm): void {
+
+  onSignUp(user: User): void {
 
     //add functionality that navigates user from sign up page
-    this.userService.addUser(addForm.value).subscribe(
+    this.userService.signUp(user).subscribe(
       (response: User) => {
         console.log(response);
-        //this.getUsers();
-        addForm.reset();
+        
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
-        addForm.reset();
+        
       }
     );
   }

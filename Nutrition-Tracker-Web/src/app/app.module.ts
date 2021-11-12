@@ -23,6 +23,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { NotificationModule } from './notification.module';
 import { NotificationService } from './services/notification.service';
+import { MealPlannerComponent } from './pages/meal-planner/meal-planner.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NotificationService } from './services/notification.service';
     LoginComponent,
     SignupComponent,
     UserComponent,
-    UsersComponent
+    UsersComponent,
+    MealPlannerComponent
   ],
   imports: [
     BrowserModule,

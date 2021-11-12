@@ -8,6 +8,8 @@ import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-pages-login',
@@ -17,7 +19,9 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class LoginComponent implements OnInit, OnDestroy {
   showLoading: boolean;
   private subscriptions: Subscription[] = [];
-  
+  faEnvelope = faEnvelope;
+  faLock = faLock;
+
   constructor(private router: Router, private authenticationService: AuthenticationService, private notificationService: NotificationService) { }
   
   ngOnInit(): void {
@@ -36,30 +40,24 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.showLoading = true;
     console.log(user);
     this.subscriptions.push(
-      this.authenticationService.login(user).subscribe(
+      this.authenticationService.logIn(user).subscribe(
         (response: HttpResponse<User>) => {
           const token = response.headers.get(HeaderType.JWT_TOKEN);
           
           this.authenticationService.saveToken(token);
           this.authenticationService.addUserToLocalCache(response.body);
           this.router.navigateByUrl('/user');
-          this.sendNotification(NotificationType.SUCCESS, "Login successful!");
+          this.notificationService.sendNotification(NotificationType.SUCCESS, "Login successful!");
           this.showLoading = false;
         },
         (errorResponse: HttpErrorResponse) => {
           console.log(errorResponse);
-          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          this.notificationService.sendNotification(NotificationType.ERROR, errorResponse.error.message);
           this.showLoading = false;
         }
       )
     );
   }
 
-  private sendNotification(notificationType: NotificationType, message: string): void {
-    if(message){
-      this.notificationService.notify(notificationType, message);
-    }else{
-      this.notificationService.notify(notificationType, 'AN ERROR OCCURED. PLEASE TRY AGAIN.');
-    }
-  }
+  
 }

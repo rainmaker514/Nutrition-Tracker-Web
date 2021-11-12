@@ -1,8 +1,10 @@
 
 <div class="hero is-fullheight">
+  <h1 id="login" style="color: white;" class="title is-1">Log In</h1>
   <div class="hero-body">
+    
     <div class="container">
-      <h1 style="color: white; padding-bottom: 200px;" class="title is-1">Log In</h1>
+      
       <div class="columns is-centered">
         <div class="column is-4">
           <form class="box" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value)">
@@ -12,7 +14,7 @@
                 <input class="input is-rounded" type="email" name="email" placeholder="Email" ngModel #emailInput="ngModel" required>
                 <span class="help is-error" *ngIf="emailInput.invalid && emailInput.touched">Email required</span>
                 <span class="icon is-small is-left">
-                  <i class="fa fa-envelope"></i>
+                  <fa-icon [icon]="faEnvelope"></fa-icon>
                 </span>
               </div>
             </div>
@@ -22,7 +24,7 @@
                 <input class="input is-rounded" type="password" name="password" placeholder="Password" ngModel #passwordInput="ngModel" required>
                 <span class="help is-error" *ngIf="passwordInput.invalid && passwordInput.touched">Password required</span>
                 <span class="icon is-small is-left">
-                  <i class="fa fa-lock"></i>
+                  <fa-icon [icon]="faLock"></fa-icon>
                 </span>
               </div>
             </div>
@@ -30,7 +32,9 @@
               <button type="submit" class="button is-small is-primary" [disabled]="loginForm.invalid">Log In</button>
             </div>
             <div class="field">
-              <a href="" style="text-decoration: underline;">Forgot password</a>
+              <a routerLink="/reset-password" style="text-decoration: underline;">Forgot password</a>
+              <a routerLink="/signup" style="text-decoration: underline;float: right">Sign Up</a>
+              <span style="float: right;">Don't have an account?&nbsp;&nbsp;</span>
             </div>
           </form>
         </div>

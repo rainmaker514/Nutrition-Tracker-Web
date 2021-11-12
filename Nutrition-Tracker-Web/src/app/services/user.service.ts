@@ -22,6 +22,10 @@ export class UserService {
     return this.http.post<User>(`${this.host}/users/add`, formData);
  }
 
+ signUp(user: User): Observable<User> {
+   return this.http.post<User>(`${this.host}/users/signup`, user);
+}
+
  updateUser(formData: FormData): Observable<User> {
     return this.http.put<User>(`${this.host}/users/update`, formData);
  }
