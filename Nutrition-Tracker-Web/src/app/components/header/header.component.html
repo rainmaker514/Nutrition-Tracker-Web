@@ -28,12 +28,32 @@
         <div class="navbar-item">
           <a *ngIf="!isLoggedIn" class="navbar-link is-arrowless" routerLink="/signup">Sign Up</a>
         </div>
-        <div class="navbar-item">
-          <a *ngIf="isLoggedIn" class="navbar-link is-arrowless" routerLink="/user">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a *ngIf="isLoggedIn" class="navbar-link is-arrowless">
             <span class="icon is-small">
               <fa-icon [icon]="faUserCircle"></fa-icon>
             </span>
           </a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item">
+              Profile
+            </a>
+            <a class="navbar-item">
+              Progress
+            </a>
+            <a class="navbar-item">
+              Meal Planner
+            </a>
+            <a class="navbar-item">
+              Health Calculator
+            </a>
+            <a class="navbar-item">
+              User List
+            </a>
+            <a class="navbar-item" style="color:red">
+              Log Out
+            </a>
+          </div>
         </div>
       </div>
     </div>

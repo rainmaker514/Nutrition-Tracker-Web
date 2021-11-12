@@ -25,9 +25,11 @@ export class HeaderComponent implements OnInit {
   
   onClick(){
     const navbarMenu = document.querySelector('#nav-links');
-
-
     navbarMenu.classList.toggle('is-active');
+  }
 
+  onDropDown(){
+    const dropDown = document.querySelector('#dropDown');
+    dropDown.classList.toggle('is-active');
   }
 }
