@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { UserComponent } from 'src/app/pages/user/user.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
+  providers: [UserComponent],
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router, private authenticationService: AuthenticationService) { }
+  constructor(private userComponent: UserComponent, private router: Router, private authenticationService: AuthenticationService) { }
   
   isLoggedIn = false;
   faUserCircle = faUserCircle;
@@ -31,5 +33,9 @@ export class HeaderComponent implements OnInit {
   onDropDown(){
     const dropDown = document.querySelector('#dropDown');
     dropDown.classList.toggle('is-active');
+  }
+
+  onLogOut(): void{
+    this.userComponent.onLogOut();
   }
 }

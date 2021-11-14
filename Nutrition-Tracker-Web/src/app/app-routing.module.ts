@@ -7,9 +7,15 @@ import { AboutComponent } from './pages/about/about.component';
 import { UserComponent } from './pages/user/user.component';
 import { UsersComponent } from './pages/users/users.component';
 import { AuthenticationGuard } from './guard/authentication.guard';
+import { MealPlannerComponent } from './pages/meal-planner/meal-planner.component';
+import { ProgressComponent } from './pages/progress/progress.component';
+import { HealthCalculatorComponent } from './pages/health-calculator/health-calculator.component';
 
 const routes: Routes = [
   { path: 'contact', component: ContactComponent },
+  { path: 'meal-planner', component: MealPlannerComponent },
+  { path: 'health-calculator', component: HealthCalculatorComponent },
+  { path: 'progress', component: ProgressComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'about', component: AboutComponent },

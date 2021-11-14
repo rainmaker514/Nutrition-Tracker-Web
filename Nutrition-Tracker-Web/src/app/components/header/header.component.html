@@ -35,22 +35,22 @@
             </span>
           </a>
           <div class="navbar-dropdown is-right">
-            <a class="navbar-item">
+            <a class="navbar-item" routerLink="/user">
               Profile
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" routerLink="/progress">
               Progress
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" routerLink="/meal-planner">
               Meal Planner
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" routerLink="/health-calculator">
               Health Calculator
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" routerLink="/users">
               User List
             </a>
-            <a class="navbar-item" style="color:red">
+            <a class="navbar-item" style="color:red" (click)="onLogOut()">
               Log Out
             </a>
           </div>
