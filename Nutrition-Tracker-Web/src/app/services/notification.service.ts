@@ -10,14 +10,19 @@ export class NotificationService {
   constructor(private notifier: NotifierService) { }
 
    notify(type: NotificationType, message: string){
-     this.notifier.notify(type, message);
+     
+     if(message){
+      this.notifier.notify(type, message);
+    }else{
+      this.notifier.notify(type, 'AN ERROR OCCURED. PLEASE TRY AGAIN.');
+    }
    }
 //combine methods
-   sendNotification(notificationType: NotificationType, message: string): void {
+   /*sendNotification(notificationType: NotificationType, message: string): void {
     if(message){
       this.notify(notificationType, message);
     }else{
       this.notify(notificationType, 'AN ERROR OCCURED. PLEASE TRY AGAIN.');
     }
-  }
+  }*/
 }

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +14,9 @@ import { faClipboard } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { NotificationType } from 'src/app/enum/notification-type.enum';
+import { Subscription } from 'rxjs';
+import { HeaderType } from 'src/app/enum/header-type.enum';
 
 
 @Component({
@@ -21,7 +24,7 @@ import { NotificationService } from 'src/app/services/notification.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit, OnDestroy {
+export class SignupComponent implements OnInit {
 
   public users: User[];
   //public heightDropDown: string[] = [];
@@ -33,12 +36,13 @@ export class SignupComponent implements OnInit, OnDestroy {
   faHourglass = faHourglass;
   faDumbbell = faDumbbell;
   faClipboard = faClipboard;
+  private subscriptions: Subscription[] = [];
 
   constructor(private notificationService: NotificationService, private userService: UserService, private authenticationService: AuthenticationService, private router: Router) {}
 
-  ngOnDestroy(): void {
+  /*ngOnDestroy(): void {
     throw new Error('Method not implemented.');
-  }
+  }*/
 
   ngOnInit(): void {
     if(this.authenticationService.isUserLoggedIn()){
@@ -55,13 +59,33 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.userService.signUp(user).subscribe(
       (response: User) => {
         console.log(response);
+        this.notificationService.notify(NotificationType.SUCCESS, `Sign up successful! Welcome, ${response.firstname}!`);
         
       },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-        
+      (errorResponse: HttpErrorResponse) => {
+        console.log(errorResponse);
+        this.notificationService.notify(NotificationType.ERROR, errorResponse.error.message);
       }
     );
+
+    //this.subscriptions.push(
+      this.authenticationService.logIn(user).subscribe(
+        (response: HttpResponse<User>) => {
+          const token = response.headers.get(HeaderType.JWT_TOKEN);
+          
+          this.authenticationService.saveToken(token);
+          this.authenticationService.addUserToLocalCache(response.body);
+          this.router.navigateByUrl('/user');
+          //this.notificationService.notify(NotificationType.SUCCESS, "Login successful!");
+          
+        },
+        (errorResponse: HttpErrorResponse) => {
+          console.log(errorResponse);
+          this.notificationService.notify(NotificationType.ERROR, errorResponse.error.message);
+          
+        }
+      )
+    //);
   }
 
 

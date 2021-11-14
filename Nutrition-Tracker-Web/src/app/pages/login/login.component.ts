@@ -47,12 +47,12 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.authenticationService.saveToken(token);
           this.authenticationService.addUserToLocalCache(response.body);
           this.router.navigateByUrl('/user');
-          this.notificationService.sendNotification(NotificationType.SUCCESS, "Login successful!");
+          this.notificationService.notify(NotificationType.SUCCESS, "Login successful!");
           this.showLoading = false;
         },
         (errorResponse: HttpErrorResponse) => {
           console.log(errorResponse);
-          this.notificationService.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          this.notificationService.notify(NotificationType.ERROR, errorResponse.error.message);
           this.showLoading = false;
         }
       )
