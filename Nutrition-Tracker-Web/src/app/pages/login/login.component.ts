@@ -47,7 +47,9 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.authenticationService.saveToken(token);
           this.authenticationService.addUserToLocalCache(response.body);
           this.router.navigateByUrl('/user');
+          
           this.notificationService.notify(NotificationType.SUCCESS, "Login successful!");
+          
           this.showLoading = false;
         },
         (errorResponse: HttpErrorResponse) => {
@@ -57,6 +59,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
       )
     );
+    
   }
 
   

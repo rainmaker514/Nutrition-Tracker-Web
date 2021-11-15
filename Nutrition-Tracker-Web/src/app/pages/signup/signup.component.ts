@@ -17,9 +17,11 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { Subscription } from 'rxjs';
 import { HeaderType } from 'src/app/enum/header-type.enum';
+import { LoginComponent } from '../login/login.component';
 
 
 @Component({
+  providers: [LoginComponent],
   selector: 'app-pages-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
@@ -38,11 +40,11 @@ export class SignupComponent implements OnInit {
   faClipboard = faClipboard;
   private subscriptions: Subscription[] = [];
 
-  constructor(private notificationService: NotificationService, private userService: UserService, private authenticationService: AuthenticationService, private router: Router) {}
+  constructor(private loginComponent: LoginComponent, private notificationService: NotificationService, private userService: UserService, private authenticationService: AuthenticationService, private router: Router) {}
 
-  /*ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }*/
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
 
   ngOnInit(): void {
     if(this.authenticationService.isUserLoggedIn()){
@@ -60,32 +62,13 @@ export class SignupComponent implements OnInit {
       (response: User) => {
         console.log(response);
         this.notificationService.notify(NotificationType.SUCCESS, `Sign up successful! Welcome, ${response.firstname}!`);
-        
+        this.loginComponent.onLogin(user);
       },
       (errorResponse: HttpErrorResponse) => {
         console.log(errorResponse);
         this.notificationService.notify(NotificationType.ERROR, errorResponse.error.message);
       }
     );
-
-    //this.subscriptions.push(
-      this.authenticationService.logIn(user).subscribe(
-        (response: HttpResponse<User>) => {
-          const token = response.headers.get(HeaderType.JWT_TOKEN);
-          
-          this.authenticationService.saveToken(token);
-          this.authenticationService.addUserToLocalCache(response.body);
-          this.router.navigateByUrl('/user');
-          //this.notificationService.notify(NotificationType.SUCCESS, "Login successful!");
-          
-        },
-        (errorResponse: HttpErrorResponse) => {
-          console.log(errorResponse);
-          this.notificationService.notify(NotificationType.ERROR, errorResponse.error.message);
-          
-        }
-      )
-    //);
   }
 
 
