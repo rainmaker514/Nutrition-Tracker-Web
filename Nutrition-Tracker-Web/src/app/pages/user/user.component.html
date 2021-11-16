@@ -1,2 +1,52 @@
-<!--logout button-->
-<button (click)="onLogOut()" class="button is-small is-primary">Log Out</button>
+
+<div class="hero is-fullheight">
+    <h1 id="profile" style="color: white;" class="title is-1">Profile</h1>
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-10">
+            <form class="box" #updateForm="ngForm" (ngSubmit)="onUpdateUser(updateForm.value)">
+              <div class="field">
+                <label class="label">Firstname</label>
+                <div class="control has-icons-left">
+                  <input class="input is-rounded" type="email" name="email" placeholder="Email" ngModel #emailInput="ngModel" required>
+                  <span class="help is-error" *ngIf="emailInput.invalid && emailInput.touched">Email required</span>
+                  <span class="icon is-small is-left">
+                    <fa-icon [icon]="faEnvelope"></fa-icon>
+                  </span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left">
+                  <input class="input is-rounded" type="password" name="password" placeholder="Password" ngModel #passwordInput="ngModel" required>
+                  <span class="help is-error" *ngIf="passwordInput.invalid && passwordInput.touched">Password required</span>
+                  <span class="icon is-small is-left">
+                    <fa-icon [icon]="faLock"></fa-icon>
+                  </span>
+                </div>
+              </div>
+              <div class="field">
+                <button type="submit" class="button is-small is-primary">Log In</button>
+              </div>
+              <div class="field">
+                <a routerLink="/reset-password" style="text-decoration: underline;">Forgot password</a>
+                <a routerLink="/signup" style="text-decoration: underline;float: right">Sign Up</a>
+                <span style="float: right;">Don't have an account?&nbsp;&nbsp;</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+            
+            
+    
+        
+    
+    
+    
+    
+    

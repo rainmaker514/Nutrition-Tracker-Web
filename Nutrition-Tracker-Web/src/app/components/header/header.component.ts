@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { User } from 'src/app/models/user';
 import { UserComponent } from 'src/app/pages/user/user.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -16,13 +17,16 @@ export class HeaderComponent implements OnInit {
   
   isLoggedIn = false;
   faUserCircle = faUserCircle;
+  user: User;
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
       if(event.constructor.name === "NavigationEnd"){
         this.isLoggedIn = this.authenticationService.isUserLoggedIn();
       }
-    })
+    });
+
+    this.user = this.authenticationService.getUserFromLocalCache();
   }
   
   onClick(){
@@ -30,10 +34,10 @@ export class HeaderComponent implements OnInit {
     navbarMenu.classList.toggle('is-active');
   }
 
-  onDropDown(){
+  /*onDropDown(){
     const dropDown = document.querySelector('#dropDown');
     dropDown.classList.toggle('is-active');
-  }
+  }*/
 
   onLogOut(): void{
     this.userComponent.onLogOut();

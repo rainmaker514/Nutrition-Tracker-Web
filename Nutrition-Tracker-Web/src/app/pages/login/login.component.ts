@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  onLogin(user: User): void{
+  onLogin(user: User): void {
     this.showLoading = true;
     console.log(user);
     this.subscriptions.push(
