@@ -1,0 +1,16 @@
+.hero{
+    background-image: url('/assets/img/bg6.jpg') !important;
+    background-size: cover;
+    background-position: center center;
+}
+
+#user-list {
+    top: 100px;
+    left: 100px;
+    position: relative;
+  }
+
+  #userListForm  {
+      
+      position: relative;
+  }

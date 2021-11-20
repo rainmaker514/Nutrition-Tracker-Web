@@ -5,7 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { AboutComponent } from './pages/about/about.component';
 import { UserComponent } from './pages/user/user.component';
-import { UsersComponent } from './pages/users/users.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { MealPlannerComponent } from './pages/meal-planner/meal-planner.component';
 import { ProgressComponent } from './pages/progress/progress.component';
@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'about', component: AboutComponent },
   { path: 'user', component: UserComponent, canActivate: [AuthenticationGuard] },
-  { path: 'users', component: UsersComponent, canActivate: [AuthenticationGuard] },
+  { path: 'user-list', component: UserListComponent, canActivate: [AuthenticationGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 

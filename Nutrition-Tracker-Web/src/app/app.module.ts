@@ -17,7 +17,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserComponent } from './pages/user/user.component';
-import { UsersComponent } from './pages/users/users.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
 import { AboutComponent } from './pages/about/about.component';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
@@ -37,7 +37,7 @@ import { ProgressComponent } from './pages/progress/progress.component';
     LoginComponent,
     SignupComponent,
     UserComponent,
-    UsersComponent,
+    UserListComponent,
     MealPlannerComponent,
     HealthCalculatorComponent,
     ProgressComponent

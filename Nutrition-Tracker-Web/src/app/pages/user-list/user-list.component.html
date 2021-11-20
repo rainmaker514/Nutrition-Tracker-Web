@@ -1,0 +1,110 @@
+<div class="hero is-fullheight">
+    <h1 id="user-list" style="color: white;" class="title is-1">User List</h1>
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-10">
+                    <form class="box" #userListForm="ngForm" style="margin-top: 100px;">
+                        <div class="field">
+                            <div class="field-body">
+                                <div class="field">
+                                    <button class="button is-small is-primary" id="addUser"><fa-icon [icon]="faPlus"></fa-icon>Add User</button>
+                                </div>
+                                <div class="field has-addons is-grouped is-grouped-right">
+                                    <div class="control">
+                                        <input class="input is-small" type="search" name="search" placeholder="Search users...">
+                                    </div>
+                                    <div class="control">
+                                        <button class="button is-info is-small">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table is-striped is-hoverable">
+                            <thead>
+                              <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Height</th>
+                                <th>Weight</th>
+                                <th>Age</th>
+                                <th>Activity Level</th>
+                                <th>Goal</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody *ngFor="let user of users">
+                                <td>{{user?.firstname}}</td>
+                                <td>{{user?.lastname}}</td>
+                                <td>{{user?.email}}</td>
+                                <td>{{user?.height}}</td>
+                                <td>{{user?.weight}}</td>
+                                <td>{{user?.age}}</td>
+                                <td>{{user?.activityLevel}}</td>
+                                <td>{{user?.goal}}</td>
+                                <td>{{user?.role}}</td>
+                                <td>
+                                    <button class="button is-small" id="editUser" (click)="onEditUserButtonClick()"><fa-icon style="color:#00d1b2"[icon]="faEdit"></fa-icon></button>
+                                    <button class="button is-small" id="deleteUser"><fa-icon style="color:red" [icon]="faTrash"></fa-icon></button>
+                                </td>
+                            </tbody>
+                        </table>      
+                    </form>
+                    <!--edit user modal-->
+                    <div class="modal" id="editUserModal">
+                        <div class="modal-background"></div>
+                        <div class="modal-card">
+                            <header class="modal-card-head">
+                                <p class="modal-card-title">Modal title</p>
+                                <button class="delete" aria-label="close" id="close"></button>
+                            </header>
+                            <section class="modal-card-body">
+                            <!-- Content ... -->
+                            </section>
+                            <footer class="modal-card-foot">
+                                <button class="button is-success" id="save">Save changes</button>
+                                <button class="button" id="cancel">Cancel</button>
+                            </footer>
+                        </div>
+                    </div>
+                    <!--delete user modal-->
+                    <div class="modal" id="">
+                        <div class="modal-background"></div>
+                        <div class="modal-card">
+                            <header class="modal-card-head">
+                                <p class="modal-card-title">Modal title</p>
+                                <button class="delete" aria-label="close"></button>
+                            </header>
+                            <section class="modal-card-body">
+                            <!-- Content ... -->
+                            </section>
+                            <footer class="modal-card-foot">
+                                <button class="button is-success">Save changes</button>
+                                <button class="button">Cancel</button>
+                            </footer>
+                        </div>
+                    </div>
+                    <!--add user modal-->
+                    <div class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-card">
+                            <header class="modal-card-head">
+                                <p class="modal-card-title">Modal title</p>
+                                <button class="delete" aria-label="close"></button>
+                            </header>
+                            <section class="modal-card-body">
+                            <!-- Content ... -->
+                            </section>
+                            <footer class="modal-card-foot">
+                                <button class="button is-success">Save changes</button>
+                                <button class="button">Cancel</button>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
