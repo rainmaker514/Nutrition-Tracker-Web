@@ -14,3 +14,16 @@
       
       position: relative;
   }
+
+ tbody:nth-child(even):hover{
+    background: #00d1b2;
+    color:white;
+    cursor: pointer;
+}
+
+tbody:nth-child(odd):hover{
+    background: #00d1b2;
+    color:white;
+    cursor: pointer;
+}
+
