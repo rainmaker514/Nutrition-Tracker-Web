@@ -8,7 +8,7 @@
                         <div class="field">
                             <div class="field-body">
                                 <div class="field">
-                                    <button class="button is-small is-primary" id="addUser"><fa-icon [icon]="faPlus"></fa-icon>Add User</button>
+                                    <button class="button is-small is-primary" id="addUser" onclick="addUserModal.classList.toggle('is-active')"><fa-icon [icon]="faPlus"></fa-icon>Add User</button>
                                 </div>
                                 <div class="field has-addons is-grouped is-grouped-right">
                                     <div class="control">
@@ -20,86 +20,91 @@
                                 </div>
                             </div>
                         </div>
-                        <table class="table is-striped is-hoverable">
+                        <table class="table is-striped is-hoverable is-fullwidth">
                             <thead>
                               <tr>
                                 <th>First Name</th>
                                 <th>Last Name</th>
-                                <th>Email</th>
-                                <th>Height</th>
-                                <th>Weight</th>
-                                <th>Age</th>
-                                <th>Activity Level</th>
-                                <th>Goal</th>
-                                <th>Role</th>
+                                <th>Email</th>    
                                 <th>Actions</th>
                               </tr>
                             </thead>
                             <tbody *ngFor="let user of users">
-                                <td>{{user?.firstname}}</td>
-                                <td>{{user?.lastname}}</td>
-                                <td>{{user?.email}}</td>
-                                <td>{{user?.height}}</td>
-                                <td>{{user?.weight}}</td>
-                                <td>{{user?.age}}</td>
-                                <td>{{user?.activityLevel}}</td>
-                                <td>{{user?.goal}}</td>
-                                <td>{{user?.role}}</td>
+                                <td onclick="viewUserModal.classList.toggle('is-active')">{{user?.firstname}}</td>
+                                <td onclick="viewUserModal.classList.toggle('is-active')">{{user?.lastname}}</td>
+                                <td onclick="viewUserModal.classList.toggle('is-active')">{{user?.email}}</td>
                                 <td>
-                                    <button class="button is-small" id="editUser" (click)="onEditUserButtonClick()"><fa-icon style="color:#00d1b2"[icon]="faEdit"></fa-icon></button>
-                                    <button class="button is-small" id="deleteUser"><fa-icon style="color:red" [icon]="faTrash"></fa-icon></button>
+                                    <button class="button is-small" onclick="editUserModal.classList.toggle('is-active')"><fa-icon style="color:#00d1b2"[icon]="faEdit"></fa-icon></button>
+                                    <button class="button is-small" id="deleteUser" onclick="deleteUserModal.classList.toggle('is-active')"><fa-icon style="color:red" [icon]="faTrash"></fa-icon></button>
                                 </td>
                             </tbody>
                         </table>      
                     </form>
                     <!--edit user modal-->
                     <div class="modal" id="editUserModal">
-                        <div class="modal-background"></div>
+                        <div class="modal-background" onclick="editUserModal.classList.toggle('is-active')"></div>
                         <div class="modal-card">
                             <header class="modal-card-head">
-                                <p class="modal-card-title">Modal title</p>
-                                <button class="delete" aria-label="close" id="close"></button>
+                                <p class="modal-card-title">editUserModal</p>
+                                <button class="delete" aria-label="close" id="close" onclick="editUserModal.classList.toggle('is-active')"></button>
                             </header>
                             <section class="modal-card-body">
                             <!-- Content ... -->
                             </section>
                             <footer class="modal-card-foot">
-                                <button class="button is-success" id="save">Save changes</button>
-                                <button class="button" id="cancel">Cancel</button>
+                                <button class="button is-success" id="save" onclick="editUserModal.classList.toggle('is-active')">Save changes</button>
+                                <button class="button" id="cancel" onclick="editUserModal.classList.toggle('is-active')">Cancel</button>
+                            </footer>
+                        </div>
+                    </div>
+                    <!--view user modal-->
+                    <div class="modal" id="viewUserModal">
+                        <div class="modal-background" onclick="viewUserModal.classList.toggle('is-active')"></div>
+                        <div class="modal-card">
+                            <header class="modal-card-head">
+                                <p class="modal-card-title">viewUserModal</p>
+                                <button class="delete" aria-label="close" id="close" onclick="viewUserModal.classList.toggle('is-active')"></button>
+                            </header>
+                            <section class="modal-card-body">
+                            <!-- Content ... -->
+                            </section>
+                            <footer class="modal-card-foot">
+                                <button class="button is-success" id="save" onclick="viewUserModal.classList.toggle('is-active')">Save changes</button>
+                                <button class="button" id="cancel" onclick="viewUserModal.classList.toggle('is-active')">Cancel</button>
                             </footer>
                         </div>
                     </div>
                     <!--delete user modal-->
-                    <div class="modal" id="">
-                        <div class="modal-background"></div>
+                    <div class="modal" id="deleteUserModal">
+                        <div class="modal-background" onclick="deleteUserModal.classList.toggle('is-active')"></div>
                         <div class="modal-card">
                             <header class="modal-card-head">
-                                <p class="modal-card-title">Modal title</p>
-                                <button class="delete" aria-label="close"></button>
+                                <p class="modal-card-title">deleteUserModal</p>
+                                <button class="delete" aria-label="close" onclick="deleteUserModal.classList.toggle('is-active')"></button>
                             </header>
                             <section class="modal-card-body">
                             <!-- Content ... -->
                             </section>
                             <footer class="modal-card-foot">
-                                <button class="button is-success">Save changes</button>
-                                <button class="button">Cancel</button>
+                                <button class="button is-success" onclick="deleteUserModal.classList.toggle('is-active')">Save changes</button>
+                                <button class="button" onclick="deleteUserModal.classList.toggle('is-active')">Cancel</button>
                             </footer>
                         </div>
                     </div>
                     <!--add user modal-->
-                    <div class="modal">
-                        <div class="modal-background"></div>
+                    <div class="modal" id="addUserModal">
+                        <div class="modal-background" onclick="addUserModal.classList.toggle('is-active')"></div>
                         <div class="modal-card">
                             <header class="modal-card-head">
-                                <p class="modal-card-title">Modal title</p>
-                                <button class="delete" aria-label="close"></button>
+                                <p class="modal-card-title">addUserModal</p>
+                                <button class="delete" aria-label="close" onclick="addUserModal.classList.toggle('is-active')"></button>
                             </header>
                             <section class="modal-card-body">
                             <!-- Content ... -->
                             </section>
                             <footer class="modal-card-foot">
-                                <button class="button is-success">Save changes</button>
-                                <button class="button">Cancel</button>
+                                <button class="button is-success" onclick="addUserModal.classList.toggle('is-active')">Save changes</button>
+                                <button class="button" onclick="addUserModal.classList.toggle('is-active')">Cancel</button>
                             </footer>
                         </div>
                     </div>

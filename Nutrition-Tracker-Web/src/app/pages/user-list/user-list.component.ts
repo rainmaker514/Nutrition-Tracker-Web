@@ -42,32 +42,8 @@ export class UserListComponent implements OnInit {
       )
     );
   }
-
-  //modal event listeners
-  onEditUserButtonClick(): void{
-    const editUserModal = document.querySelector('#editUserModal');
-    const modalBg = document.querySelector('.modal-background');
-    const cancelButton = document.querySelector('#cancel');
-    const closeButton = document.querySelector('#close');
-    const saveButton = document.querySelector('#save');
-
-    editUserModal.classList.add('is-active');
-
-    cancelButton.addEventListener('click', () => {
-      editUserModal.classList.remove('is-active');
-    });
-
-    closeButton.addEventListener('click', () => {
-      editUserModal.classList.remove('is-active');
-    });
-
-    modalBg.addEventListener('click', () => {
-      editUserModal.classList.remove('is-active');
-    });
-
-    saveButton.addEventListener('click', () => {
-      //TODO: make function to update user
-      editUserModal.classList.remove('is-active');
-    });
-  }
+  
+  onEditUser(): void{
+    
+  }  
 }
