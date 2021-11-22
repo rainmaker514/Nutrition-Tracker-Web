@@ -30,9 +30,9 @@
                               </tr>
                             </thead>
                             <tbody *ngFor="let user of users">
-                                <td onclick="viewUserModal.classList.toggle('is-active')">{{user?.firstname}}</td>
-                                <td onclick="viewUserModal.classList.toggle('is-active')">{{user?.lastname}}</td>
-                                <td onclick="viewUserModal.classList.toggle('is-active')">{{user?.email}}</td>
+                                <td (click)="onSelectUser(user)">{{user?.firstname}}</td>
+                                <td (click)="onSelectUser(user)">{{user?.lastname}}</td>
+                                <td (click)="onSelectUser(user)">{{user?.email}}</td>
                                 <td>
                                     <button class="button is-small" onclick="editUserModal.classList.toggle('is-active')"><fa-icon style="color:#00d1b2"[icon]="faEdit"></fa-icon></button>
                                     <button class="button is-small" id="deleteUser" onclick="deleteUserModal.classList.toggle('is-active')"><fa-icon style="color:red" [icon]="faTrash"></fa-icon></button>
@@ -49,7 +49,7 @@
                                 <button class="delete" aria-label="close" id="close" onclick="editUserModal.classList.toggle('is-active')"></button>
                             </header>
                             <section class="modal-card-body">
-                            <!-- Content ... -->
+                                
                             </section>
                             <footer class="modal-card-foot">
                                 <button class="button is-success" id="save" onclick="editUserModal.classList.toggle('is-active')">Save changes</button>
@@ -62,11 +62,37 @@
                         <div class="modal-background" onclick="viewUserModal.classList.toggle('is-active')"></div>
                         <div class="modal-card">
                             <header class="modal-card-head">
-                                <p class="modal-card-title">viewUserModal</p>
+                                <p class="modal-card-title">{{selectedUser?.firstname}} {{selectedUser?.lastname}} Information</p>
                                 <button class="delete" aria-label="close" id="close" onclick="viewUserModal.classList.toggle('is-active')"></button>
                             </header>
                             <section class="modal-card-body">
-                            <!-- Content ... -->
+                                <div class="panel">
+                                    <p class="panel-block">
+                                       <b>Name:&nbsp;</b> {{selectedUser?.firstname}} {{selectedUser?.lastname}}
+                                    </p>
+                                    
+                                    <p class="panel-block">
+                                        {{selectedUser?.email}}
+                                    </p>
+                                    <p class="panel-block">
+                                        {{selectedUser?.height}}
+                                    </p>
+                                    <p class="panel-block">
+                                        {{selectedUser?.weight}}
+                                    </p>
+                                    <p class="panel-block">
+                                        {{selectedUser?.age}}
+                                    </p>
+                                    <p class="panel-block">
+                                        {{selectedUser?.activityLevel}}
+                                    </p>
+                                    <p class="panel-block">
+                                        {{selectedUser?.goal}}
+                                    </p>
+                                    <p class="panel-block">
+                                        {{selectedUser?.role}}
+                                    </p>
+                                </div>
                             </section>
                             <footer class="modal-card-foot">
                                 <button class="button is-success" id="save" onclick="viewUserModal.classList.toggle('is-active')">Save changes</button>

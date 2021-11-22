@@ -8,73 +8,81 @@
                     <form class="box" #updateForm="ngForm" (ngSubmit)="onUpdateUser(updateForm.value)">
                         <div class="field">
                             <div class="field-body">
-                                <div class="field">
-                                    <label class="label">Firstname</label>
-                                    <div class="control has-icons-left">
-                                        <input class="input is-rounded" type="text" name="firstname" [(ngModel)]="user.firstname" required>
-                                            <span class="icon is-small is-left">
-                                                <fa-icon [icon]="faUser"></fa-icon>
-                                            </span>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <label class="label">Lastname</label>
-                                    <div class="control has-icons-left">
-                                        <input class="input is-rounded" type="text" name="lastname" [(ngModel)]="user.lastname" required>
-                                            <span class="icon is-small is-left">
-                                                <fa-icon [icon]="faUser"></fa-icon>
-                                            </span>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="field-body">
-                                <div class="field">
-                                    <label class="label">Email</label>
-                                    <div class="control has-icons-left">
-                                        <input class="input is-rounded" type="email" name="email" [(ngModel)]="user.email" required>
-                                            <span class="icon is-small is-left">
-                                                <fa-icon [icon]="faEnvelope"></fa-icon>
-                                            </span>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <label class="label">Height</label>
-                                    <div class="control has-icons-left">
-                                        <div class="select is-rounded">
-                                            <select>
-                                                <option class="dropdown-item" disabled value="">Select height</option>
-                                                <option class="dropdown-item" selected ngDefaultControl name="height" [(ngModel)]="user.height" value="">{{user.height}}</option>
-                                                <option *ngFor="let height of heightDropDown" [ngValue]="height">{{height}}</option>
-                                            </select>
-                                        </div>
-                                        <span class="icon is-small is-left">
-                                            <fa-icon [icon]="faRuler"></fa-icon>
-                                        </span>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="field-body">
-                                <div class="field">
-                                    <label class="label">Weight</label>
-                                    <div class="field has-addons">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Firstname</label>
                                         <div class="control has-icons-left">
-                                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" class="input is-rounded" type="number" name="weight" [(ngModel)]="user.weight"> 
+                                            <input class="input is-rounded" type="text" name="firstname" [(ngModel)]="user.firstname" required>
                                                 <span class="icon is-small is-left">
-                                                    <fa-icon [icon]="faWeight"></fa-icon>
+                                                    <fa-icon [icon]="faUser"></fa-icon>
                                                 </span>
                                         </div>
-                                      
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Lastname</label>
+                                        <div class="control has-icons-left">
+                                            <input class="input is-rounded" type="text" name="lastname" [(ngModel)]="user.lastname" required>
+                                                <span class="icon is-small is-left">
+                                                    <fa-icon [icon]="faUser"></fa-icon>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="field-body">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Email</label>
+                                        <div class="control has-icons-left">
+                                            <input class="input is-rounded" size="9" type="email" name="email" [(ngModel)]="user.email" required>
+                                                <span class="icon is-small is-left">
+                                                    <fa-icon [icon]="faEnvelope"></fa-icon>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Height</label>
+                                        <div class="control has-icons-left">
+                                            <div class="select is-rounded">
+                                                <select>
+                                                    <option class="dropdown-item" disabled value="">Select height</option>
+                                                    <option class="dropdown-item" selected ngDefaultControl name="height" [(ngModel)]="user.height" value="">{{user.height}}</option>
+                                                    <option *ngFor="let height of heightDropDown" [ngValue]="height">{{height}}</option>
+                                                </select>
+                                            </div>
+                                            <span class="icon is-small is-left">
+                                                <fa-icon [icon]="faRuler"></fa-icon>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="field-body">
+                                <div class="column">
+                                    <div class="field">
+                                    <label class="label">Weight</label>
+                                        <div class="field has-addons">
+                                            <div class="control has-icons-left">
+                                                <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" class="input is-rounded" type="number" name="weight" [(ngModel)]="user.weight"> 
+                                                    <span class="icon is-small is-left">
+                                                        <fa-icon [icon]="faWeight"></fa-icon>
+                                                    </span>
+                                            </div>
                                         <p class="control">
                                             <a class="button is-static">lbs</a>
                                         </p>
-                                    </div>  
+                                        </div>  
+                                    </div>
                                 </div>
+                            <div class="column">
                                 <div class="field">
                                     <label class="label">Age</label>
                                     <div class="control has-icons-left">
@@ -86,26 +94,30 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                         <div class="field">
                             <div class="field-body">
-                                <div class="field">
-                                    <label class="label">Activity Level</label>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Activity Level</label>
                                         <div class="control has-icons-left">
-                                        <div class="select is-rounded">
-                                            <select>
-                                                <option class="dropdown-item" disabled value="">Select activity level</option>
-                                                <option class="dropdown-item" selected ngDefaultControl name="activityLevel" [(ngModel)]="user.activityLevel" value="">{{user.activityLevel}}</option>
-                                                <option value="Sedentary">Sedentary</option>
-                                                <option value="Light">Light</option>
-                                                <option value="Moderate">Moderate</option>
-                                                <option value="Heavy">Heavy</option>
-                                            </select>
+                                            <div class="select is-rounded">
+                                                <select>
+                                                    <option class="dropdown-item" disabled value="">Select activity level</option>
+                                                    <option class="dropdown-item" selected ngDefaultControl name="activityLevel" [(ngModel)]="user.activityLevel" value="">{{user.activityLevel}}</option>
+                                                    <option value="Sedentary">Sedentary</option>
+                                                    <option value="Light">Light</option>
+                                                    <option value="Moderate">Moderate</option>
+                                                    <option value="Heavy">Heavy</option>
+                                                </select>
+                                            </div>
+                                            <div class="icon is-small is-left">
+                                                <fa-icon [icon]="faDumbbell"></fa-icon>
+                                            </div>
                                         </div>
-                                        <div class="icon is-small is-left">
-                                            <fa-icon [icon]="faDumbbell"></fa-icon>
-                                        </div>
-                                        </div>
+                                    </div>
                                 </div>
+                            <div class="column">
                                 <div class="field">
                                     <label class="label">Goal</label>
                                         <div class="control has-icons-left">
@@ -125,10 +137,11 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                         <div class="field">
                             <div class="field-body">
                                 <div class="field">
-                                    
+                                    <button class="button is-success" style="margin-top: 10px;">Save Changes</button>
                                 </div>
                             </div>
                         </div>    

@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { faEdit, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faClipboard, faDumbbell, faEdit, faEnvelope, faHourglass, faPlus, faRuler, faTrash, faUser, faWeight } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { User } from 'src/app/models/user';
@@ -17,10 +17,20 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService, private notificationService: NotificationService) { }
 
   users: User[];
+  user: User;
+  selectedUser: User;
+  public heightDropDown: string[] = [];
   private subscriptions: Subscription[] = [];
   faPlus = faPlus;
   faEdit = faEdit;
   faTrash = faTrash;
+  faUser = faUser;
+  faClipboard = faClipboard;
+  faDumbbell = faDumbbell;
+  faHourglass = faHourglass;
+  faWeight = faWeight;
+  faRuler = faRuler;
+  faEnvelope = faEnvelope;
 
   ngOnInit(): void {
     this.getUsers(true);
@@ -41,6 +51,12 @@ export class UserListComponent implements OnInit {
         }
       )
     );
+  }
+
+  onSelectUser(selectedUser: User): void{
+    this.selectedUser = selectedUser;
+    document.getElementById('viewUserModal').classList.toggle('is-active');
+    
   }
   
   onEditUser(): void{
