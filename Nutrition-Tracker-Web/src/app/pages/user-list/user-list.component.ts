@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { faClipboard, faDumbbell, faEdit, faEnvelope, faHourglass, faPlus, faRuler, faTrash, faUser, faWeight } from '@fortawesome/free-solid-svg-icons';
+import { faClipboard, faDumbbell, faEdit, faEnvelope, faHourglass, faPlus, faRuler, faShieldAlt, faTrash, faUser, faWeight } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { User } from 'src/app/models/user';
@@ -31,6 +31,7 @@ export class UserListComponent implements OnInit {
   faWeight = faWeight;
   faRuler = faRuler;
   faEnvelope = faEnvelope;
+  faShield = faShieldAlt;
 
   ngOnInit(): void {
     this.getUsers(true);

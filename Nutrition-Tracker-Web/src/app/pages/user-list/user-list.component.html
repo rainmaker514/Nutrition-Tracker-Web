@@ -68,35 +68,62 @@
                             <section class="modal-card-body">
                                 <div class="panel">
                                     <p class="panel-block">
-                                       <b>Name:&nbsp;</b> {{selectedUser?.firstname}} {{selectedUser?.lastname}}
-                                    </p>
-                                    
-                                    <p class="panel-block">
-                                        {{selectedUser?.email}}
+                                       <b>Name&nbsp;<fa-icon [icon]="faUser"></fa-icon>&nbsp;:&nbsp;</b> {{selectedUser?.firstname}} {{selectedUser?.lastname}}
                                     </p>
                                     <p class="panel-block">
-                                        {{selectedUser?.height}}
+                                        <b>Email&nbsp;<fa-icon [icon]="faEnvelope"></fa-icon>&nbsp;:&nbsp;</b>{{selectedUser?.email}}
                                     </p>
-                                    <p class="panel-block">
-                                        {{selectedUser?.weight}}
+                                    <p *ngIf="!selectedUser?.height; else elseHeight" class="panel-block">
+                                        <b>Height&nbsp;<fa-icon [icon]="faRuler"></fa-icon>&nbsp;:&nbsp;</b>N/A
                                     </p>
-                                    <p class="panel-block">
-                                        {{selectedUser?.age}}
+                                    <ng-template #elseHeight>
+                                        <p class="panel-block">
+                                            <b>Height&nbsp;<fa-icon [icon]="faRuler"></fa-icon>&nbsp;:&nbsp;</b>{{selectedUser?.height}}
+                                        </p>
+                                    </ng-template>
+                                    <p *ngIf="!selectedUser?.weight; else elseWeight" class="panel-block">
+                                        <b>Weight&nbsp;<fa-icon [icon]="faWeight"></fa-icon>&nbsp;:&nbsp;</b>N/A
                                     </p>
-                                    <p class="panel-block">
-                                        {{selectedUser?.activityLevel}}
+                                    <ng-template #elseWeight>
+                                        <p class="panel-block">
+                                            <b>Weight&nbsp;<fa-icon [icon]="faWeight"></fa-icon>&nbsp;:&nbsp;</b>{{selectedUser?.weight}}
+                                        </p>
+                                    </ng-template>
+                                    <p *ngIf="selectedUser?.age==0; else elseAge" class="panel-block">
+                                        <b>Age&nbsp;&nbsp;<fa-icon [icon]="faHourglass"></fa-icon>&nbsp;:&nbsp;</b>N/A
                                     </p>
-                                    <p class="panel-block">
-                                        {{selectedUser?.goal}}
+                                    <ng-template #elseAge>
+                                        <p class="panel-block">
+                                            <b>Age&nbsp;<fa-icon [icon]="faHourglass"></fa-icon>&nbsp;:&nbsp;</b>{{selectedUser?.age}}
+                                        </p>
+                                    </ng-template>
+                                    <p *ngIf="!selectedUser?.activityLevel; else elseAct" class="panel-block">
+                                        <b>Activity Level&nbsp;<fa-icon [icon]="faDumbbell"></fa-icon>&nbsp;:&nbsp;</b>N/A
                                     </p>
-                                    <p class="panel-block">
-                                        {{selectedUser?.role}}
+                                    <ng-template #elseAct>
+                                        <p class="panel-block">
+                                            <b>Activity Level&nbsp;<fa-icon [icon]="faDumbbell"></fa-icon>&nbsp;:&nbsp;</b>{{selectedUser?.activityLevel}}
+                                        </p>
+                                    </ng-template>
+                                    <p *ngIf="!selectedUser?.goal; else elseGoal" class="panel-block">
+                                        <b>Goal&nbsp;<fa-icon [icon]="faClipboard"></fa-icon>&nbsp;:&nbsp;</b>N/A
+                                    </p>
+                                    <ng-template #elseGoal>
+                                        <p class="panel-block">
+                                            <b>Goal&nbsp;<fa-icon [icon]="faClipboard"></fa-icon>&nbsp;:&nbsp;</b>{{selectedUser?.goal}}
+                                        </p>
+                                    </ng-template>
+                                    <p class="panel-block has-icons-right">
+                                        <b>Role&nbsp;<fa-icon [icon]="faShield"></fa-icon>&nbsp;:&nbsp;</b>{{selectedUser?.role}}
                                     </p>
                                 </div>
                             </section>
                             <footer class="modal-card-foot">
-                                <button class="button is-success" id="save" onclick="viewUserModal.classList.toggle('is-active')">Save changes</button>
-                                <button class="button" id="cancel" onclick="viewUserModal.classList.toggle('is-active')">Cancel</button>
+                                <div class="container">
+                                    <div class="field">
+                                        <button class="button is-pulled-right" onclick="viewUserModal.classList.toggle('is-active')">Close</button>
+                                    </div>
+                                </div>
                             </footer>
                         </div>
                     </div>
