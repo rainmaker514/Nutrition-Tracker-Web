@@ -33,30 +33,19 @@
                                 <td (click)="onSelectUser(user)">{{user?.firstname}}</td>
                                 <td (click)="onSelectUser(user)">{{user?.lastname}}</td>
                                 <td (click)="onSelectUser(user)">{{user?.email}}</td>
-                                <td>
-                                    <button class="button is-small" onclick="editUserModal.classList.toggle('is-active')"><fa-icon style="color:#00d1b2"[icon]="faEdit"></fa-icon></button>
+                                <td class="">
+                                    <button class="button is-small" (click)="onEditUser(user)"
+                                    ><fa-icon style="color:#00d1b2"[icon]="faEdit"></fa-icon></button>
                                     <button class="button is-small" id="deleteUser" onclick="deleteUserModal.classList.toggle('is-active')"><fa-icon style="color:red" [icon]="faTrash"></fa-icon></button>
                                 </td>
                             </tbody>
                         </table>      
                     </form>
-                    <!--edit user modal-->
-                    <div class="modal" id="editUserModal">
-                        <div class="modal-background" onclick="editUserModal.classList.toggle('is-active')"></div>
-                        <div class="modal-card">
-                            <header class="modal-card-head">
-                                <p class="modal-card-title">editUserModal</p>
-                                <button class="delete" aria-label="close" id="close" onclick="editUserModal.classList.toggle('is-active')"></button>
-                            </header>
-                            <section class="modal-card-body">
-                                
-                            </section>
-                            <footer class="modal-card-foot">
-                                <button class="button is-success" id="save" onclick="editUserModal.classList.toggle('is-active')">Save changes</button>
-                                <button class="button" id="cancel" onclick="editUserModal.classList.toggle('is-active')">Cancel</button>
-                            </footer>
-                        </div>
-                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                     <!--view user modal-->
                     <div class="modal" id="viewUserModal">
                         <div class="modal-background" onclick="viewUserModal.classList.toggle('is-active')"></div>
@@ -127,6 +116,33 @@
                             </footer>
                         </div>
                     </div>
+
+                    <!--edit user modal-->
+                    <div class="modal" id="editUserModal">
+                        <div class="modal-background" onclick="editUserModal.classList.toggle('is-active')"></div>
+                        <div class="modal-card">
+                            <header class="modal-card-head">
+                                <p class="modal-card-title">Edit User</p>
+                                <button class="delete" aria-label="close" id="close" onclick="editUserModal.classList.toggle('is-active')"></button>
+                            </header>
+                            <section class="modal-card-body">
+                                <div>
+                                <form #editForm="ngForm">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" name="firstName" required
+                                          [(ngModel)]="editUser.firstname" class="form-control">
+                                      </div>
+                                </form>
+                            </div>
+                            </section>
+                            <footer class="modal-card-foot">
+                                <button class="button is-success" id="save" (click)="onUpdateUser()">Save changes</button>
+                                <button class="button" id="cancel" onclick="editUserModal.classList.toggle('is-active')">Cancel</button>
+                            </footer>
+                        </div>
+                    </div>
+                    
                     <!--delete user modal-->
                     <div class="modal" id="deleteUserModal">
                         <div class="modal-background" onclick="deleteUserModal.classList.toggle('is-active')"></div>
@@ -161,8 +177,4 @@
                             </footer>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                
