@@ -1,3 +1,4 @@
+
 <div class="hero is-fullheight">
     <h1 id="user-list" style="color: white;" class="title is-1">User List</h1>
     <div class="hero-body">
@@ -47,7 +48,7 @@
     </div>
 </div>
                     <!--view user modal-->
-                    <div class="modal" id="viewUserModal">
+                    <div class="modal animate__animated animate__fadeIn" id="viewUserModal">
                         <div class="modal-background" onclick="viewUserModal.classList.toggle('is-active')"></div>
                         <div class="modal-card">
                             <header class="modal-card-head">
@@ -110,7 +111,7 @@
                             <footer class="modal-card-foot">
                                 <div class="container">
                                     <div class="field">
-                                        <button class="button is-pulled-right" onclick="viewUserModal.classList.toggle('is-active')">Close</button>
+                                        <button onclick="viewUserModal.classList.toggle('is-active')"class="button is-pulled-right">Close</button>
                                     </div>
                                 </div>
                             </footer>
@@ -118,7 +119,7 @@
                     </div>
 
                     <!--edit user modal-->
-                    <div class="modal" id="editUserModal">
+                    <div class="modal animate__animated animate__fadeIn" id="editUserModal">
                         <div class="modal-background" onclick="editUserModal.classList.toggle('is-active')"></div>
                         <div class="modal-card">
                             <header class="modal-card-head">
@@ -126,15 +127,141 @@
                                 <button class="delete" aria-label="close" id="close" onclick="editUserModal.classList.toggle('is-active')"></button>
                             </header>
                             <section class="modal-card-body">
-                                <div>
                                 <form #editForm="ngForm">
-                                    <div class="form-group">
-                                        <label for="firstName">First Name</label>
-                                        <input type="text" name="firstName" required
-                                          [(ngModel)]="editUser.firstname" class="form-control">
-                                      </div>
+                                    <div class="field">
+                                        <div class="field-body">
+                                            <div class="column">
+                                                <div class="field">
+                                                    <label class="label">Firstname</label>
+                                                    <div class="control has-icons-left">
+                                                        <input class="input is-rounded" type="text" name="firstname" [(ngModel)]="editUser.firstname" required>
+                                                            <span class="icon is-small is-left">
+                                                                <fa-icon [icon]="faUser"></fa-icon>
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="column">
+                                                <div class="field">
+                                                    <label class="label">Lastname</label>
+                                                    <div class="control has-icons-left">
+                                                        <input class="input is-rounded" type="text" name="lastname" [(ngModel)]="editUser.lastname" required>
+                                                            <span class="icon is-small is-left">
+                                                                <fa-icon [icon]="faUser"></fa-icon>
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-body">
+                                            <div class="column">
+                                                <div class="field">
+                                                    <label class="label">Email</label>
+                                                    <div class="control has-icons-left">
+                                                        <input class="input is-rounded" size="9" type="email" name="email" [(ngModel)]="editUser.email" required>
+                                                            <span class="icon is-small is-left">
+                                                                <fa-icon [icon]="faEnvelope"></fa-icon>
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="column">
+                                                <div class="field">
+                                                    <label class="label">Height</label>
+                                                    <div class="control has-icons-left">
+                                                        <div class="select is-rounded">
+                                                            <select>
+                                                                <option class="dropdown-item" disabled value="">Select height</option>
+                                                                <option class="dropdown-item" selected ngDefaultControl name="height" [(ngModel)]="editUser.height" value="">{{editUser?.height}}</option>
+                                                                <option *ngFor="let height of heightDropDown" [ngValue]="height">{{height}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="icon is-small is-left">
+                                                            <fa-icon [icon]="faRuler"></fa-icon>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-body">
+                                            <div class="column">
+                                                <div class="field">
+                                                <label class="label">Weight</label>
+                                                    <div class="field has-addons">
+                                                        <div class="control has-icons-left">
+                                                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" class="input is-rounded" type="number" name="weight" [(ngModel)]="editUser.weight"> 
+                                                                <span class="icon is-small is-left">
+                                                                    <fa-icon [icon]="faWeight"></fa-icon>
+                                                                </span>
+                                                        </div>
+                                                    <p class="control">
+                                                        <a class="button is-static">lbs</a>
+                                                    </p>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        <div class="column">
+                                            <div class="field">
+                                                <label class="label">Age</label>
+                                                <div class="control has-icons-left">
+                                                    <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2" class="input is-rounded" type="number" name="age" [(ngModel)]="editUser.age">
+                                                        <span class="icon is-small is-left">
+                                                            <fa-icon [icon]="faHourglass"></fa-icon>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="field">
+                                        <div class="field-body">
+                                            <div class="column">
+                                                <div class="field">
+                                                    <label class="label">Activity Level</label>
+                                                    <div class="control has-icons-left">
+                                                        <div class="select is-rounded">
+                                                            <select>
+                                                                <option class="dropdown-item" disabled value="">Select activity level</option>
+                                                                <option class="dropdown-item" selected ngDefaultControl name="activityLevel" [(ngModel)]="editUser.activityLevel" value="">{{editUser?.activityLevel}}</option>
+                                                                <option value="Sedentary">Sedentary</option>
+                                                                <option value="Light">Light</option>
+                                                                <option value="Moderate">Moderate</option>
+                                                                <option value="Heavy">Heavy</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="icon is-small is-left">
+                                                            <fa-icon [icon]="faDumbbell"></fa-icon>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <div class="column">
+                                            <div class="field">
+                                                <label class="label">Goal</label>
+                                                    <div class="control has-icons-left">
+                                                        <div class="select is-rounded">
+                                                            <select>
+                                                                <option class="dropdown-item" disabled value="">Select goal</option>
+                                                                <option class="dropdown-item" name="goal" ngDefaultControl [(ngModel)]="editUser.goal" selected value="">{{editUser?.goal}}</option>
+                                                                <option value="Lose weight">Lose weight</option>
+                                                                <option value="Maintain weight">Maintain weight</option>
+                                                                <option value="Gain weight">Gain weight</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="icon is-small is-left">
+                                                            <fa-icon [icon]="faClipboard"></fa-icon>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 </form>
-                            </div>
+                            
                             </section>
                             <footer class="modal-card-foot">
                                 <button class="button is-success" id="save" (click)="onUpdateUser()">Save changes</button>
@@ -144,7 +271,7 @@
                     </div>
                     
                     <!--delete user modal-->
-                    <div class="modal" id="deleteUserModal">
+                    <div class="modal animate__animated animate__fadeIn" id="deleteUserModal">
                         <div class="modal-background" onclick="deleteUserModal.classList.toggle('is-active')"></div>
                         <div class="modal-card">
                             <header class="modal-card-head">
@@ -161,7 +288,7 @@
                         </div>
                     </div>
                     <!--add user modal-->
-                    <div class="modal" id="addUserModal">
+                    <div class="modal animate__animated animate__fadeIn" id="addUserModal">
                         <div class="modal-background" onclick="addUserModal.classList.toggle('is-active')"></div>
                         <div class="modal-card">
                             <header class="modal-card-head">
@@ -169,7 +296,77 @@
                                 <button class="delete" aria-label="close" onclick="addUserModal.classList.toggle('is-active')"></button>
                             </header>
                             <section class="modal-card-body">
-                            <!-- Content ... -->
+                                <form #addForm="ngForm" (ngSubmit)="onAddUser(addForm.value)">
+                                    <div class="field">
+                                        <div class="field-body">
+                                            <div class="column">
+                                                <div class="field">
+                                                    <label class="label">Firstname</label>
+                                                    <div class="control has-icons-left">
+                                                        <input class="input is-rounded" type="text" name="firstname" ngModel required>
+                                                            <span class="icon is-small is-left">
+                                                                <fa-icon [icon]="faUser"></fa-icon>
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="column">
+                                                <div class="field">
+                                                    <label class="label">Lastname</label>
+                                                    <div class="control has-icons-left">
+                                                        <input class="input is-rounded" type="text" name="lastname" ngModel required>
+                                                            <span class="icon is-small is-left">
+                                                                <fa-icon [icon]="faUser"></fa-icon>
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-body">
+                                            <div class="column">
+                                                <div class="field">
+                                                    <label class="label">Email</label>
+                                                    <div class="control has-icons-left">
+                                                        <input class="input is-rounded" size="9" type="email" name="email" ngModel required>
+                                                            <span class="icon is-small is-left">
+                                                                <fa-icon [icon]="faEnvelope"></fa-icon>
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-body">
+                                            <div class="column">
+                                                <div class="field">
+                                                    <label class="label">Role</label>
+                                                    <div class="control has-icons-left">
+                                                        <div class="select is-rounded">
+                                                            <select name="role" required ngModel="ROLE_USER">
+                                                                <option class="dropdown-item" ngDefaultControl selected disabled value="">Select Role</option>
+                                                                <option value="ROLE_USER">USER</option>
+                                                                <option value="ROLE_ADMIN">ADMIN</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="icon is-small is-left">
+                                                            <fa-icon [icon]="faShield"></fa-icon>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                    
+                                            </div>
+                                        
+                                    
+                                    </div>
+                                
+
+                                
+                                </form>
                             </section>
                             <footer class="modal-card-foot">
                                 <button class="button is-success" onclick="addUserModal.classList.toggle('is-active')">Save changes</button>

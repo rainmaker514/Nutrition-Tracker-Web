@@ -19,7 +19,8 @@ export class UserListComponent implements OnInit {
   users: User[];
   user: User;
   selectedUser: User;
-  editUser: User;
+  addUser: User;
+  editUser: User = new User();
   public heightDropDown: string[] = [];
   private subscriptions: Subscription[] = [];
   faPlus = faPlus;
@@ -45,7 +46,7 @@ export class UserListComponent implements OnInit {
           this.userService.addUsersToLocalCache(response);
           this.users = response;
           if(showNotification){
-            this.notificationService.notify(NotificationType.SUCCESS, `${response.length} user(s) found.`)
+            this.notificationService.notify(NotificationType.SUCCESS, `${response.length} user(s) found.`);
           }
         },
         (errorResponse: HttpErrorResponse) =>{
@@ -57,7 +58,8 @@ export class UserListComponent implements OnInit {
 
   onSelectUser(selectedUser: User): void{
     this.selectedUser = selectedUser;
-    document.getElementById('viewUserModal').classList.toggle('is-active');
+    const view = document.getElementById('viewUserModal');
+    view.classList.toggle('is-active');
   }
   
   onEditUser(editUser: User): void{
@@ -68,4 +70,8 @@ export class UserListComponent implements OnInit {
   onUpdateUser(): void{
     document.getElementById('editUserModal').classList.toggle('is-active');
   }  
+
+  onAddUser(addUser: User): void{
+
+  }
 }
