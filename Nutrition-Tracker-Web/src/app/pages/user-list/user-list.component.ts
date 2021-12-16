@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { faClipboard, faDumbbell, faEdit, faEnvelope, faHourglass, faPlus, faRuler, faShieldAlt, faTrash, faUser, faWeight } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { NotificationType } from 'src/app/enum/notification-type.enum';
@@ -71,7 +72,25 @@ export class UserListComponent implements OnInit {
     document.getElementById('editUserModal').classList.toggle('is-active');
   }  
 
-  onAddUser(addUser: User): void{
+  onAddUser(addUserForm: NgForm): void{
+    const formData = this.userService.createUserFormData(null, addUserForm.value);
+    this.subscriptions.push(
+      this.userService.addUser(formData).subscribe(
+        (response: User) => {
+          document.getElementById('addUserClose').click();
+          this.getUsers(false);
+          addUserForm.reset();
+          this.notificationService.notify(NotificationType.SUCCESS, `${response.firstname} ${response.lastname} was updated successfully.`);
+        },
+        (errorResponse: HttpErrorResponse) =>{
+          this.notificationService.notify(NotificationType.ERROR, errorResponse.error.message);
+          console.log(errorResponse);
+        }
+      )
+    );
+  }
 
+  saveNewUser(): void{
+    document.getElementById('addUserSave').click();
   }
 }

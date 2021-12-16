@@ -296,7 +296,7 @@
                                 <button class="delete" aria-label="close" onclick="addUserModal.classList.toggle('is-active')"></button>
                             </header>
                             <section class="modal-card-body">
-                                <form #addForm="ngForm" (ngSubmit)="onAddUser(addForm.value)">
+                                <form #addUserForm="ngForm" (ngSubmit)="onAddUser(addUserForm)">
                                     <div class="field">
                                         <div class="field-body">
                                             <div class="column">
@@ -364,13 +364,13 @@
                                     
                                     </div>
                                 
-
+                                    <button type="submit" style="display: none;" id="addUserSave"></button>
                                 
                                 </form>
                             </section>
                             <footer class="modal-card-foot">
-                                <button class="button is-success" onclick="addUserModal.classList.toggle('is-active')">Save changes</button>
-                                <button class="button" onclick="addUserModal.classList.toggle('is-active')">Cancel</button>
+                                <button class="button is-success" (click)="saveNewUser()">Save changes</button>
+                                <button class="button" id="addUserClose" [disabled]="addUserForm.invalid" onclick="addUserModal.classList.toggle('is-active')">Cancel</button>
                             </footer>
                         </div>
                     </div>
