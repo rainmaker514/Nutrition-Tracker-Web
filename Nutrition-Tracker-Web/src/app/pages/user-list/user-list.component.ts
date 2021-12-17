@@ -14,9 +14,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-
-  constructor(private userService: UserService, private notificationService: NotificationService) { }
-
+  private currentEmail: string;
   users: User[];
   user: User;
   selectedUser: User;
@@ -35,6 +33,8 @@ export class UserListComponent implements OnInit {
   faRuler = faRuler;
   faEnvelope = faEnvelope;
   faShield = faShieldAlt;
+
+  constructor(private userService: UserService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.getUsers(true);
@@ -65,11 +65,26 @@ export class UserListComponent implements OnInit {
   
   onEditUser(editUser: User): void{
     this.editUser = editUser;
+    this.currentEmail = editUser.email;
     document.getElementById('editUserModal').classList.toggle('is-active');
   }  
 
   onUpdateUser(): void{
-    document.getElementById('editUserModal').classList.toggle('is-active');
+    const formData = this.userService.createUserFormData(this.currentEmail, this.editUser);
+    this.subscriptions.push(
+      this.userService.updateUser(formData).subscribe(
+        (response: User) => {
+          document.getElementById('editUserModal').classList.toggle('is-active');
+          this.getUsers(false);
+          
+          this.notificationService.notify(NotificationType.SUCCESS, `${response.firstname} ${response.lastname} was updated successfully.`);
+        },
+        (errorResponse: HttpErrorResponse) =>{
+          this.notificationService.notify(NotificationType.ERROR, errorResponse.error.message);
+          console.log(errorResponse);
+        }
+      )
+    );
   }  
 
   onAddUser(addUserForm: NgForm): void{
@@ -80,7 +95,7 @@ export class UserListComponent implements OnInit {
           document.getElementById('addUserClose').click();
           this.getUsers(false);
           addUserForm.reset();
-          this.notificationService.notify(NotificationType.SUCCESS, `${response.firstname} ${response.lastname} was updated successfully.`);
+          this.notificationService.notify(NotificationType.SUCCESS, `${response.firstname} ${response.lastname} was added successfully.`);
         },
         (errorResponse: HttpErrorResponse) =>{
           this.notificationService.notify(NotificationType.ERROR, errorResponse.error.message);
@@ -92,5 +107,20 @@ export class UserListComponent implements OnInit {
 
   saveNewUser(): void{
     document.getElementById('addUserSave').click();
+  }
+
+  searchUsers(searchTerm: string): void{
+    const results: User[] = [];
+    for(const user of this.userService.getUsersFromLocalCache()){
+      if(user.firstname.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 ||
+      user.lastname.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 ||
+      user.email.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1){
+        results.push(user);
+      }
+    }
+    this.users = results;
+    if(results.length === 0 || !searchTerm){
+      this.users = this.userService.getUsersFromLocalCache();
+    }
   }
 }

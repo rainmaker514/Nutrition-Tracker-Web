@@ -5,7 +5,7 @@
         <div class="container">
             <div class="columns is-centered">
                 <div class="column is-10">
-                    <form class="box" #userListForm="ngForm" style="margin-top: 100px;">
+                    <form class="box" #searchForm="ngForm" style="margin-top: 100px;">
                         <div class="field">
                             <div class="field-body">
                                 <div class="field">
@@ -13,11 +13,9 @@
                                 </div>
                                 <div class="field has-addons is-grouped is-grouped-right">
                                     <div class="control">
-                                        <input class="input is-small" type="search" name="search" placeholder="Search users...">
+                                        <input (ngModelChange)="searchUsers(searchForm.value.searchTerm)" ngModel class="input is-small" type="search" name="searchTerm" placeholder="Search users...">
                                     </div>
-                                    <div class="control">
-                                        <button class="button is-info is-small">Search</button>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -127,7 +125,7 @@
                                 <button class="delete" aria-label="close" id="close" onclick="editUserModal.classList.toggle('is-active')"></button>
                             </header>
                             <section class="modal-card-body">
-                                <form #editForm="ngForm">
+                                <form #editUserForm="ngForm">
                                     <div class="field">
                                         <div class="field-body">
                                             <div class="column">
@@ -257,14 +255,29 @@
                                                         </div>
                                                     </div>
                                             </div>
+                                            <div class="field">
+                                                <label class="label">Role</label>
+                                                <div class="control has-icons-left">
+                                                    <div class="select is-rounded">
+                                                        <select name="role" required ngModel="ROLE_USER">
+                                                            <option class="dropdown-item" ngDefaultControl selected disabled value="">Select Role</option>
+                                                            <option value="ROLE_USER">USER</option>
+                                                            <option value="ROLE_ADMIN">ADMIN</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="icon is-small is-left">
+                                                        <fa-icon [icon]="faShield"></fa-icon>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 </form>
-                            
+                                <button type="submit" style="display: none;" id="editUserSave"></button>
                             </section>
                             <footer class="modal-card-foot">
-                                <button class="button is-success" id="save" (click)="onUpdateUser()">Save changes</button>
+                                <button [disabled]="editUserForm.invalid" class="button is-success" id="save" (click)="onUpdateUser()">Save changes</button>
                                 <button class="button" id="cancel" onclick="editUserModal.classList.toggle('is-active')">Cancel</button>
                             </footer>
                         </div>
