@@ -170,9 +170,9 @@
                                                     <label class="label">Height</label>
                                                     <div class="control has-icons-left">
                                                         <div class="select is-rounded">
-                                                            <select>
-                                                                <option class="dropdown-item" disabled value="">Select height</option>
-                                                                <option class="dropdown-item" selected ngDefaultControl name="height" [(ngModel)]="editUser.height" value="">{{editUser?.height}}</option>
+                                                            <select name="height" [(ngModel)]="editUser.height">
+                                                                <option id="dropdown-item" class="dropdown-item" disabled value="">Select height</option>
+                                                                <option id="dropdown-item" class="dropdown-item" selected>{{editUser?.height}}</option>
                                                                 <option *ngFor="let height of heightDropDown" [ngValue]="height">{{height}}</option>
                                                             </select>
                                                         </div>
@@ -221,14 +221,14 @@
                                                 <div class="field">
                                                     <label class="label">Activity Level</label>
                                                     <div class="control has-icons-left">
-                                                        <div class="select is-rounded">
-                                                            <select>
-                                                                <option class="dropdown-item" disabled value="">Select activity level</option>
-                                                                <option class="dropdown-item" selected ngDefaultControl name="activityLevel" [(ngModel)]="editUser.activityLevel" value="">{{editUser?.activityLevel}}</option>
-                                                                <option value="Sedentary">Sedentary</option>
-                                                                <option value="Light">Light</option>
-                                                                <option value="Moderate">Moderate</option>
-                                                                <option value="Heavy">Heavy</option>
+                                                        <div class="select is-rounded is-normal">
+                                                            <select name="activityLevel" [(ngModel)]="editUser.activityLevel">
+                                                                <option id="dropdown-item" class="dropdown-item" disabled value="">Select activity level</option>
+                                                                <option id="dropdown-item" class="dropdown-item" selected name="activityLevel" value="">{{editUser?.activityLevel}}</option>
+                                                                <option [hidden]="editUser.activityLevel === 'Sedentary'" value="Sedentary">Sedentary</option>
+                                                                <option [hidden]="editUser.activityLevel === 'Light'" value="Light">Light</option>
+                                                                <option [hidden]="editUser.activityLevel === 'Moderate'" value="Moderate">Moderate</option>
+                                                                <option [hidden]="editUser.activityLevel === 'Heavy'" value="Heavy">Heavy</option>
                                                             </select>
                                                         </div>
                                                         <div class="icon is-small is-left">
@@ -242,12 +242,12 @@
                                                 <label class="label">Goal</label>
                                                     <div class="control has-icons-left">
                                                         <div class="select is-rounded">
-                                                            <select>
-                                                                <option class="dropdown-item" disabled value="">Select goal</option>
-                                                                <option class="dropdown-item" name="goal" ngDefaultControl [(ngModel)]="editUser.goal" selected value="">{{editUser?.goal}}</option>
-                                                                <option value="Lose weight">Lose weight</option>
-                                                                <option value="Maintain weight">Maintain weight</option>
-                                                                <option value="Gain weight">Gain weight</option>
+                                                            <select name="goal" [(ngModel)]="editUser.goal">
+                                                                <option id="dropdown-item" class="dropdown-item" disabled value="">Select goal</option>
+                                                                <option id="dropdown-item" class="dropdown-item" selected value="">{{editUser?.goal}}</option>
+                                                                <option [hidden]="editUser.goal === 'Lose weight'" value="Lose weight">Lose weight</option>
+                                                                <option [hidden]="editUser.goal === 'Maintain weight'" value="Maintain weight">Maintain weight</option>
+                                                                <option [hidden]="editUser.goal === 'Gain weight'" value="Gain weight">Gain weight</option>
                                                             </select>
                                                         </div>
                                                         <div class="icon is-small is-left">
@@ -259,10 +259,11 @@
                                                 <label class="label">Role</label>
                                                 <div class="control has-icons-left">
                                                     <div class="select is-rounded">
-                                                        <select name="role" required ngModel="ROLE_USER">
-                                                            <option class="dropdown-item" ngDefaultControl selected disabled value="">Select Role</option>
-                                                            <option value="ROLE_USER">USER</option>
-                                                            <option value="ROLE_ADMIN">ADMIN</option>
+                                                        <select name="role" required [(ngModel)]="editUser.role">
+                                                            <option id="dropdown-item" class="dropdown-item" disabled value="">Select Role</option>
+                                                            <option selected value="">{{editUser?.role}}</option>
+                                                            <option [hidden]="editUser.role === 'ROLE_USER'" value="ROLE_USER">ROLE_USER</option>
+                                                            <option [hidden]="editUser.role === 'ROLE_ADMIN'" value="ROLE_ADMIN">ROLE_ADMIN</option>
                                                         </select>
                                                     </div>
                                                     <div class="icon is-small is-left">
@@ -305,7 +306,7 @@
                         <div class="modal-background" onclick="addUserModal.classList.toggle('is-active')"></div>
                         <div class="modal-card">
                             <header class="modal-card-head">
-                                <p class="modal-card-title">addUserModal</p>
+                                <p class="modal-card-title">Add User</p>
                                 <button class="delete" aria-label="close" onclick="addUserModal.classList.toggle('is-active')"></button>
                             </header>
                             <section class="modal-card-body">
@@ -382,7 +383,10 @@
                                 </form>
                             </section>
                             <footer class="modal-card-foot">
-                                <button class="button is-success" (click)="saveNewUser()">Save changes</button>
+                                <button class="button is-success" [disabled]="addUserForm.invalid || showLoading" (click)="saveNewUser()">
+                                    <span *ngIf="showLoading">Please wait...</span>
+                                    <span *ngIf="!showLoading">Save Changes</span>    
+                                </button>
                                 <button class="button" id="addUserClose" [disabled]="addUserForm.invalid" onclick="addUserModal.classList.toggle('is-active')">Cancel</button>
                             </footer>
                         </div>

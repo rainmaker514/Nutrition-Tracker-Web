@@ -33,6 +33,7 @@ export class UserListComponent implements OnInit {
   faRuler = faRuler;
   faEnvelope = faEnvelope;
   faShield = faShieldAlt;
+  showLoading = false;
 
   constructor(private userService: UserService, private notificationService: NotificationService) { }
 
@@ -96,7 +97,7 @@ export class UserListComponent implements OnInit {
         (response: User) => {
           document.getElementById('editUserModal').classList.toggle('is-active');
           this.getUsers(false);
-          
+          console.log(response.height);
           this.notificationService.notify(NotificationType.SUCCESS, `${response.firstname} ${response.lastname} was updated successfully.`);
         },
         (errorResponse: HttpErrorResponse) =>{
@@ -126,6 +127,7 @@ export class UserListComponent implements OnInit {
   }
 
   saveNewUser(): void{
+    this.showLoading = true;
     document.getElementById('addUserSave').click();
   }
 
