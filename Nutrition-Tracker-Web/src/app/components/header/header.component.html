@@ -30,7 +30,7 @@
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a *ngIf="isLoggedIn" class="navbar-link is-arrowless">
-            <span>Welcome, {{user.firstname}}!&nbsp;&nbsp;&nbsp;</span>
+            <span>Welcome, {{user?.firstname}}!&nbsp;&nbsp;&nbsp;</span>
             <span class="icon is-small">
               <fa-icon [icon]="faUserCircle"></fa-icon>
             </span>

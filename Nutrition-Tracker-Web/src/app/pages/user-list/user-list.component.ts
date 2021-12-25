@@ -64,10 +64,30 @@ export class UserListComponent implements OnInit {
   }
   
   onEditUser(editUser: User): void{
+    this.populateHeightArray();
     this.editUser = editUser;
     this.currentEmail = editUser.email;
     document.getElementById('editUserModal').classList.toggle('is-active');
   }  
+
+  populateHeightArray(){
+    var ft = 4;
+        var inch = 0;
+
+        for(let i = 0; i < 36; i++){
+
+          if(ft == 7){
+            break;
+          }
+
+          if(inch == 12){
+            ft++;
+            inch = 0;
+          }
+
+          this.heightDropDown.push(ft + "\'" + inch++ + '"');
+        }
+  }
 
   onUpdateUser(): void{
     const formData = this.userService.createUserFormData(this.currentEmail, this.editUser);
