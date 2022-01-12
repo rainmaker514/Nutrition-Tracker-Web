@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { faClipboard, faDumbbell, faEdit, faEnvelope, faHourglass, faPlus, faRuler, faShieldAlt, faTrash, faUser, faWeight } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { NotificationType } from 'src/app/enum/notification-type.enum';
+import { CustomHttpResponse } from 'src/app/models/custom-http-response';
 import { User } from 'src/app/models/user';
 import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from 'src/app/services/user.service';
@@ -18,6 +19,7 @@ export class UserListComponent implements OnInit {
   users: User[];
   user: User;
   selectedUser: User;
+  deleteUser: User;
   addUser: User;
   editUser: User = new User();
   public heightDropDown: string[] = [];
@@ -63,6 +65,27 @@ export class UserListComponent implements OnInit {
     const view = document.getElementById('viewUserModal');
     view.classList.toggle('is-active');
   }
+
+  onDeleteUser(deleteUser: User): void{
+    this.deleteUser = deleteUser;
+    const del = document.getElementById('deleteUserModal');
+    del.classList.toggle('is-active');
+    document.getElementById('delete-btn').addEventListener("click", () => {
+      this.subscriptions.push(
+        this.userService.deleteUser(deleteUser.id).subscribe(
+          (response: CustomHttpResponse) => {
+            console.log(response);
+            this.notificationService.notify(NotificationType.SUCCESS, response.message);
+            this.getUsers(true);
+          },
+          (errorResponse: HttpErrorResponse) =>{
+            this.notificationService.notify(NotificationType.ERROR, errorResponse.error.message);
+            console.log(errorResponse);
+          }
+        )
+      );
+    });
+  }
   
   onEditUser(editUser: User): void{
     this.populateHeightArray();
@@ -97,7 +120,6 @@ export class UserListComponent implements OnInit {
         (response: User) => {
           document.getElementById('editUserModal').classList.toggle('is-active');
           this.getUsers(false);
-          console.log(response.height);
           this.notificationService.notify(NotificationType.SUCCESS, `${response.firstname} ${response.lastname} was updated successfully.`);
         },
         (errorResponse: HttpErrorResponse) =>{

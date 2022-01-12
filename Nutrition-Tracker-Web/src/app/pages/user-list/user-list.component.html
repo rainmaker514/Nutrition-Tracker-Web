@@ -35,7 +35,7 @@
                                 <td class="">
                                     <button class="button is-small" (click)="onEditUser(user)"
                                     ><fa-icon style="color:#00d1b2"[icon]="faEdit"></fa-icon></button>
-                                    <button class="button is-small" id="deleteUser" onclick="deleteUserModal.classList.toggle('is-active')"><fa-icon style="color:red" [icon]="faTrash"></fa-icon></button>
+                                    <button class="button is-small" id="deleteUser" (click)="onDeleteUser(user)"><fa-icon style="color:red" [icon]="faTrash"></fa-icon></button>
                                 </td>
                             </tbody>
                         </table>      
@@ -289,15 +289,15 @@
                         <div class="modal-background" onclick="deleteUserModal.classList.toggle('is-active')"></div>
                         <div class="modal-card">
                             <header class="modal-card-head">
-                                <p class="modal-card-title">deleteUserModal</p>
+                                <p class="modal-card-title">Delete User</p>
                                 <button class="delete" aria-label="close" onclick="deleteUserModal.classList.toggle('is-active')"></button>
                             </header>
                             <section class="modal-card-body">
-                            <!-- Content ... -->
+                                Delete {{deleteUser?.firstname}} {{deleteUser?.lastname}}?
                             </section>
                             <footer class="modal-card-foot">
-                                <button class="button is-success" onclick="deleteUserModal.classList.toggle('is-active')">Save changes</button>
-                                <button class="button" onclick="deleteUserModal.classList.toggle('is-active')">Cancel</button>
+                                <button id="delete-btn" class="button is-success" onclick="deleteUserModal.classList.toggle('is-active')">Yes</button>
+                                <button class="button" onclick="deleteUserModal.classList.toggle('is-active')">No</button>
                             </footer>
                         </div>
                     </div>
