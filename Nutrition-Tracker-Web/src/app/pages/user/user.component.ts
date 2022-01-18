@@ -33,6 +33,7 @@ export class UserComponent implements OnInit {
   faDumbbell = faDumbbell;
   faClipboard = faClipboard;
   private subscriptions: Subscription[] = [];
+  showLoading = false;
 
   ngOnInit(): void {
     this.user = this.authenticationService.getUserFromLocalCache();
@@ -70,17 +71,21 @@ export class UserComponent implements OnInit {
   }
 
   public onResetPassword(emailForm: NgForm): void{
-    const email = emailForm.value[''];
+    this.showLoading = true;
+    const email = emailForm.value['email'];
     this.subscriptions.push(
       this.userService.resetPassword(email).subscribe(
         (response: CustomHttpResponse) => {
+          this.showLoading = false;
           this.notificationService.notify(NotificationType.SUCCESS, response.message);
+          document.getElementById('close-btn').click();
         },
         (error: HttpErrorResponse) => {
-          this.notificationService.notify(NotificationType.ERROR, error.error.message);
+          this.notificationService.notify(NotificationType.WARNING, error.error.message);
         },
         () => emailForm.reset()
       )
     );
+    
   }
 }
