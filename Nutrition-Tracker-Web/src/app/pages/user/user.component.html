@@ -137,6 +137,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="field">
+                            <a onclick="resetPasswordModal.classList.toggle('is-active')" style="text-decoration: underline;">Reset Password</a>
+                        </div>
                     </div>
                         <div class="field">
                             <div class="field-body">
@@ -149,6 +152,28 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal animate__animated animate__fadeIn" id="resetPasswordModal">
+    <div class="modal-background" onclick="resetPasswordModal.classList.toggle('is-active')"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Reset Password</p>
+            <button class="delete" aria-label="close" id="close" onclick="resetPasswordModal.classList.toggle('is-active')"></button>
+        </header>
+        <section class="modal-card-body">
+             
+            
+        </section>
+        <footer class="modal-card-foot">
+            <div class="container">
+                <div class="field">
+                    <button onclick="resetPasswordModal.classList.toggle('is-active')" class="button is-primary">Reset</button>
+                    <button onclick="resetPasswordModal.classList.toggle('is-active')" class="button is-pulled-right">Close</button>
+                </div>
+            </div>
+        </footer>
     </div>
 </div>
     
