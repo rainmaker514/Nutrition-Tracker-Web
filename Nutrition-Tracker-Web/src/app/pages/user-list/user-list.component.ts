@@ -6,8 +6,10 @@ import { Subscription } from 'rxjs';
 import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { CustomHttpResponse } from 'src/app/models/custom-http-response';
 import { User } from 'src/app/models/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from 'src/app/services/user.service';
+import { Role } from 'src/app/enum/role.enum';
 
 @Component({
   selector: 'app-pages-user-list',
@@ -37,7 +39,7 @@ export class UserListComponent implements OnInit {
   faShield = faShieldAlt;
   showLoading = false;
 
-  constructor(private userService: UserService, private notificationService: NotificationService) { }
+  constructor(private userService: UserService, private notificationService: NotificationService, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.getUsers(true);
@@ -68,15 +70,15 @@ export class UserListComponent implements OnInit {
 
   onDeleteUser(deleteUser: User): void{
     this.deleteUser = deleteUser;
-    const del = document.getElementById('deleteUserModal');
-    del.classList.toggle('is-active');
-    document.getElementById('delete-btn').addEventListener("click", () => {
+    //const del = document.getElementById('deleteUserModal');
+    //del.classList.toggle('is-active');
+    //document.getElementById('delete-btn').addEventListener("click", () => {
       this.subscriptions.push(
         this.userService.deleteUser(deleteUser.id).subscribe(
           (response: CustomHttpResponse) => {
             console.log(response);
             this.notificationService.notify(NotificationType.SUCCESS, response.message);
-            this.getUsers(true);
+            this.getUsers(false);
           },
           (errorResponse: HttpErrorResponse) =>{
             this.notificationService.notify(NotificationType.ERROR, errorResponse.error.message);
@@ -84,14 +86,20 @@ export class UserListComponent implements OnInit {
           }
         )
       );
-    });
+      //del.classList.toggle('is-active');
+    //});
   }
   
   onEditUser(editUser: User): void{
-    this.populateHeightArray();
-    this.editUser = editUser;
-    this.currentEmail = editUser.email;
-    document.getElementById('editUserModal').classList.toggle('is-active');
+    if(this.isAdmin){
+      this.populateHeightArray();
+      this.editUser = editUser;
+      this.currentEmail = editUser.email;
+      document.getElementById('editUserModal').classList.toggle('is-active');
+    }else{
+      this.notificationService.notify(NotificationType.ERROR, "YOU DON'T HAVE ENOUGH PERMISSION.");
+    }
+    
   }  
 
   populateHeightArray(){
@@ -166,5 +174,17 @@ export class UserListComponent implements OnInit {
     if(results.length === 0 || !searchTerm){
       this.users = this.userService.getUsersFromLocalCache();
     }
+  }
+
+  public get isAdmin(): boolean {
+    return this.getUserRole() === Role.ADMIN;
+  }
+
+  private getUserRole(): string {
+    return this.authenticationService.getUserFromLocalCache().role;
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 }

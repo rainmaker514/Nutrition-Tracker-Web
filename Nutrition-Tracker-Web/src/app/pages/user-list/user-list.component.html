@@ -9,7 +9,7 @@
                         <div class="field">
                             <div class="field-body">
                                 <div class="field">
-                                    <button class="button is-small is-primary" id="addUser" onclick="addUserModal.classList.toggle('is-active')"><fa-icon [icon]="faPlus"></fa-icon>Add User</button>
+                                    <button [disabled] = "!isAdmin" class="button is-small is-primary" id="addUser" onclick="addUserModal.classList.toggle('is-active')"><fa-icon [icon]="faPlus"></fa-icon>Add User</button>
                                 </div>
                                 <div class="field has-addons is-grouped is-grouped-right">
                                     <div class="control">
@@ -285,7 +285,7 @@
                     </div>
                     
                     <!--delete user modal-->
-                    <div class="modal animate__animated animate__fadeIn" id="deleteUserModal">
+                    <!--<div class="modal animate__animated animate__fadeIn" id="deleteUserModal">
                         <div class="modal-background" onclick="deleteUserModal.classList.toggle('is-active')"></div>
                         <div class="modal-card">
                             <header class="modal-card-head">
@@ -296,11 +296,11 @@
                                 Delete {{deleteUser?.firstname}} {{deleteUser?.lastname}}?
                             </section>
                             <footer class="modal-card-foot">
-                                <button id="delete-btn" class="button is-success" onclick="deleteUserModal.classList.toggle('is-active')">Yes</button>
+                                <button id="delete-btn" class="button is-success" (click)="onDeleteUser(deleteUser)">Yes</button>
                                 <button class="button" onclick="deleteUserModal.classList.toggle('is-active')">No</button>
                             </footer>
                         </div>
-                    </div>
+                    </div>-->
                     <!--add user modal-->
                     <div class="modal animate__animated animate__fadeIn" id="addUserModal">
                         <div class="modal-background" onclick="addUserModal.classList.toggle('is-active')"></div>
