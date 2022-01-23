@@ -32,7 +32,7 @@
               <button type="submit" class="button is-small is-primary" [disabled]="loginForm.invalid">Log In</button>
             </div>
             <div class="field">
-              <a routerLink="/reset-password" style="text-decoration: underline;">Forgot password</a>
+              <a onclick="resetPasswordModal.classList.toggle('is-active')" style="text-decoration: underline;">Reset Password</a>
               <a routerLink="/signup" style="text-decoration: underline;float: right">Sign Up</a>
               <span style="float: right;">Don't have an account?&nbsp;&nbsp;</span>
             </div>
@@ -40,6 +40,36 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!--reset password modal-->
+<div class="modal animate__animated animate__fadeIn" id="resetPasswordModal">
+  <div class="modal-background" onclick="resetPasswordModal.classList.toggle('is-active')"></div>
+  <div class="modal-card">
+      <header class="modal-card-head">
+          <p class="modal-card-title">Reset Password</p>
+          <button class="delete" aria-label="close" id="close" onclick="resetPasswordModal.classList.toggle('is-active')"></button>
+      </header>
+      <section class="modal-card-body">
+           <form #resetPasswordForm="ngForm" (ngSubmit)="onResetPassword(resetPasswordForm)">
+              <div class="field">
+                  <label class="label">Email</label>
+                  <input class="input is-rounded"  type="email" name="email" required ngModel>
+              </div>
+              <button type="submit" style="display: none;" id="reset-btn"></button>
+           </form>
+          
+      </section>
+      <footer class="modal-card-foot">
+  
+                  <button [disabled]="resetPasswordForm.invalid || showLoading" onclick="document.getElementById('reset-btn').click()" class="button is-primary">
+                      <span *ngIf="showLoading">Please wait...</span>
+                      <span *ngIf="!showLoading">Reset</span>
+                  </button>
+                  <button onclick="resetPasswordModal.classList.toggle('is-active')" id="close-btn" class="button">Close</button>
+              
+      </footer>
   </div>
 </div>
 

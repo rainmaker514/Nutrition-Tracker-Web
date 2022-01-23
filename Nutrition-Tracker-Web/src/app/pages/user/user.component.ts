@@ -34,6 +34,9 @@ export class UserComponent implements OnInit {
   faClipboard = faClipboard;
   private subscriptions: Subscription[] = [];
   showLoading = false;
+  updateUser: User = new User();
+  private currentEmail: string;
+
 
   ngOnInit(): void {
     this.user = this.authenticationService.getUserFromLocalCache();
@@ -44,10 +47,6 @@ export class UserComponent implements OnInit {
     this.authenticationService.logout();
     this.router.navigateByUrl('/login');
     this.notificationService.notify(NotificationType.SUCCESS, "You've been logged out.");
-  }
-
-  onUpdateUser(user: User): void{
-
   }
 
   //generate array of heights for dropdown
@@ -88,4 +87,22 @@ export class UserComponent implements OnInit {
     );
     
   }
+
+  onUpdateUser(): void{
+    const formData = this.userService.createUserFormData(this.user.email, this.user);
+    console.log(this.user);
+    this.subscriptions.push(
+      this.userService.updateUser(formData).subscribe(
+        (response: User) => {
+          this.authenticationService.addUserToLocalCache(this.user);
+          this.user = this.authenticationService.getUserFromLocalCache();
+          this.notificationService.notify(NotificationType.SUCCESS, `${response.firstname} ${response.lastname} was updated successfully.`);
+        },
+        (errorResponse: HttpErrorResponse) =>{
+          this.notificationService.notify(NotificationType.ERROR, errorResponse.error.message);
+          console.log(errorResponse);
+        }
+      )
+    );
+  }  
 }

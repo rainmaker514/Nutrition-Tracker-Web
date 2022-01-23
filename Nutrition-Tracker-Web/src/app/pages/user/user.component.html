@@ -5,7 +5,7 @@
         <div class="container">
             <div class="columns is-centered">
                 <div class="column is-7">
-                    <form class="box" #updateForm="ngForm" (ngSubmit)="onUpdateUser(updateForm.value)">
+                    <form class="box" #updateForm="ngForm">
                         <div class="field">
                             <div class="field-body">
                                 <div class="column">
@@ -50,10 +50,10 @@
                                         <label class="label">Height</label>
                                         <div class="control has-icons-left">
                                             <div class="select is-rounded">
-                                                <select>
+                                                <select name="height" [(ngModel)]="user.height">
                                                     <option class="dropdown-item" disabled value="">Select height</option>
-                                                    <option class="dropdown-item" selected ngDefaultControl name="height" [(ngModel)]="user.height" value="">{{user.height}}</option>
-                                                    <option *ngFor="let height of heightDropDown" [ngValue]="height">{{height}}</option>
+                                                    <option class="dropdown-item" selected value="">{{user.height}}</option>
+                                                    <option [hidden]="user.height === height" *ngFor="let height of heightDropDown" [ngValue]="height">{{height}}</option>
                                                 </select>
                                             </div>
                                             <span class="icon is-small is-left">
@@ -102,13 +102,13 @@
                                         <label class="label">Activity Level</label>
                                         <div class="control has-icons-left">
                                             <div class="select is-rounded">
-                                                <select>
+                                                <select name="activityLevel" [(ngModel)]="user.activityLevel">
                                                     <option class="dropdown-item" disabled value="">Select activity level</option>
-                                                    <option class="dropdown-item" selected ngDefaultControl name="activityLevel" [(ngModel)]="user.activityLevel" value="">{{user.activityLevel}}</option>
-                                                    <option value="Sedentary">Sedentary</option>
-                                                    <option value="Light">Light</option>
-                                                    <option value="Moderate">Moderate</option>
-                                                    <option value="Heavy">Heavy</option>
+                                                    <option class="dropdown-item" selected value="">{{user.activityLevel}}</option>
+                                                    <option [hidden]="user.activityLevel === 'Sedentary'" value="Sedentary">Sedentary</option>
+                                                    <option [hidden]="user.activityLevel === 'Light'" value="Light">Light</option>
+                                                    <option [hidden]="user.activityLevel === 'Moderate'" value="Moderate">Moderate</option>
+                                                    <option [hidden]="user.activityLevel === 'Heavy'" value="Heavy">Heavy</option>
                                                 </select>
                                             </div>
                                             <div class="icon is-small is-left">
@@ -122,12 +122,12 @@
                                     <label class="label">Goal</label>
                                         <div class="control has-icons-left">
                                             <div class="select is-rounded">
-                                                <select>
+                                                <select name="goal"[(ngModel)]="user.goal">
                                                     <option class="dropdown-item" disabled value="">Select goal</option>
-                                                    <option class="dropdown-item" name="goal" ngDefaultControl [(ngModel)]="user.goal" selected value="">{{user.goal}}</option>
-                                                    <option value="Lose weight">Lose weight</option>
-                                                    <option value="Maintain weight">Maintain weight</option>
-                                                    <option value="Gain weight">Gain weight</option>
+                                                    <option class="dropdown-item" selected value="">{{user.goal}}</option>
+                                                    <option [hidden]="user.goal === 'Lose weight'" value="Lose weight">Lose weight</option>
+                                                    <option [hidden]="user.goal === 'Maintain weight'" value="Maintain weight">Maintain weight</option>
+                                                    <option [hidden]="user.goal === 'Gain weight'" value="Gain weight">Gain weight</option>
                                                 </select>
                                             </div>
                                             <div class="icon is-small is-left">
@@ -144,7 +144,7 @@
                         <div class="field">
                             <div class="field-body">
                                 <div class="field">
-                                    <button class="button is-success" style="margin-top: 10px;">Save Changes</button>
+                                    <button (click)="onUpdateUser()" class="button is-success" style="margin-top: 10px;">Save Changes</button>
                                 </div>
                             </div>
                         </div>    

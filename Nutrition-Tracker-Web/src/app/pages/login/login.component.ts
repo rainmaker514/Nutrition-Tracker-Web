@@ -10,6 +10,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { UserService } from 'src/app/services/user.service';
+import { CustomHttpResponse } from 'src/app/models/custom-http-response';
 
 @Component({
   selector: 'app-pages-login',
@@ -22,7 +24,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   faEnvelope = faEnvelope;
   faLock = faLock;
 
-  constructor(private router: Router, private authenticationService: AuthenticationService, private notificationService: NotificationService) { }
+  constructor(private router: Router, private authenticationService: AuthenticationService, private notificationService: NotificationService, 
+    private userService: UserService) { }
   
   ngOnInit(): void {
     if(this.authenticationService.isUserLoggedIn()){
@@ -62,5 +65,23 @@ export class LoginComponent implements OnInit, OnDestroy {
     
   }
 
+  public onResetPassword(emailForm: NgForm): void{
+    this.showLoading = true;
+    const email = emailForm.value['email'];
+    this.subscriptions.push(
+      this.userService.resetPassword(email).subscribe(
+        (response: CustomHttpResponse) => {
+          this.showLoading = false;
+          this.notificationService.notify(NotificationType.SUCCESS, response.message);
+          document.getElementById('close-btn').click();
+        },
+        (error: HttpErrorResponse) => {
+          this.notificationService.notify(NotificationType.WARNING, error.error.message);
+        },
+        () => emailForm.reset()
+      )
+    );
+    
+  }
   
 }
