@@ -138,7 +138,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <a onclick="resetPasswordModal.classList.toggle('is-active')" style="text-decoration: underline;">Reset Password</a>
+                            <a onclick="changePasswordModal.classList.toggle('is-active')" style="text-decoration: underline;">Change Password</a>
                         </div>
                     </div>
                         <div class="field">
@@ -155,31 +155,33 @@
     </div>
 </div>
 
-<!--reset password modal-->
-<div class="modal animate__animated animate__fadeIn" id="resetPasswordModal">
-    <div class="modal-background" onclick="resetPasswordModal.classList.toggle('is-active')"></div>
+<!--change password modal-->
+<div class="modal animate__animated animate__fadeIn" id="changePasswordModal">
+    <div class="modal-background" onclick="changePasswordModal.classList.toggle('is-active')"></div>
     <div class="modal-card">
         <header class="modal-card-head">
-            <p class="modal-card-title">Reset Password</p>
-            <button class="delete" aria-label="close" id="close" onclick="resetPasswordModal.classList.toggle('is-active')"></button>
+            <p class="modal-card-title">Change Password</p>
+            <button class="delete" aria-label="close" id="close" onclick="changePasswordModal.classList.toggle('is-active')"></button>
         </header>
         <section class="modal-card-body">
-             <form #resetPasswordForm="ngForm" (ngSubmit)="onResetPassword(resetPasswordForm)">
+             <form #changePasswordForm="ngForm" (ngSubmit)="onChangePassword(changePasswordForm)">
                 <div class="field">
                     <label class="label">Email</label>
                     <input class="input is-rounded"  type="email" name="email" required ngModel>
+                    <label class="label">New Password</label>
+                    <input class="input is-rounded"  type="password" name="newPassword" required ngModel>
                 </div>
-                <button type="submit" style="display: none;" id="reset-btn"></button>
+                <button type="submit" style="display: none;" id="chn-btn"></button>
              </form>
             
         </section>
         <footer class="modal-card-foot">
     
-                    <button [disabled]="resetPasswordForm.invalid || showLoading" onclick="document.getElementById('reset-btn').click()" class="button is-primary">
+                    <button [disabled]="changePasswordForm.invalid || showLoading" onclick="document.getElementById('chn-btn').click()" class="button is-primary">
                         <span *ngIf="showLoading">Please wait...</span>
                         <span *ngIf="!showLoading">Reset</span>
                     </button>
-                    <button onclick="resetPasswordModal.classList.toggle('is-active')" id="close-btn" class="button">Close</button>
+                    <button onclick="changePasswordModal.classList.toggle('is-active')" id="close-btn" class="button">Close</button>
                 
         </footer>
     </div>

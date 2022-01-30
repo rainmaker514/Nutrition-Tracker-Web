@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -85,7 +85,29 @@ export class UserComponent implements OnInit {
         () => emailForm.reset()
       )
     );
+  }
+
+  onChangePassword(changePasswordForm: NgForm): void{
+    this.showLoading = true;
+    const email = changePasswordForm.value['email'];
+    const newPassword = changePasswordForm.value['newPassword'];
+    let params = new HttpParams()
+    .set('email', email)
+    .set('newPassword', newPassword);
     
+    this.subscriptions.push(
+      this.userService.changePassword(params).subscribe(
+        (response: User) => {
+          this.showLoading = false;
+          this.notificationService.notify(NotificationType.SUCCESS, "Password changed.");
+          document.getElementById('close-btn').click();
+        },
+        (error: HttpErrorResponse) => {
+          this.notificationService.notify(NotificationType.WARNING, error.error.message);
+        },
+        () => changePasswordForm.reset()
+      )
+    );
   }
 
   onUpdateUser(): void{

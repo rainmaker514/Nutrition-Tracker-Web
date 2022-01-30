@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { User } from '../models/user';
 import { Observable } from 'rxjs/internal/Observable';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { CustomHttpResponse } from '../models/custom-http-response';
+import { NgForm } from '@angular/forms';
 
 
 @Injectable()
@@ -32,6 +33,10 @@ export class UserService {
 
  resetPassword(email: string): Observable<CustomHttpResponse | HttpErrorResponse> {
    return this.http.get<CustomHttpResponse>(`${this.host}/users/reset-password/${email}`);
+ }
+
+ changePassword(params: HttpParams): Observable<User>{
+   return this.http.put<User>(`${this.host}/users/change-password`, params);
  }
 
  deleteUser(id: number): Observable<CustomHttpResponse | HttpErrorResponse> {
@@ -63,5 +68,9 @@ export class UserService {
    formData.append('role', user.role);
 
    return formData;
+ }
+
+ createEmailPasswordFormData(){
+
  }
 }
