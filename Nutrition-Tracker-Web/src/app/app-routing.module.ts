@@ -8,14 +8,14 @@ import { UserComponent } from './pages/user/user.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { MealPlannerComponent } from './pages/meal-planner/meal-planner.component';
-import { ProgressComponent } from './pages/progress/progress.component';
+import { InfoComponent } from './pages/info/info.component';
 import { HealthCalculatorComponent } from './pages/health-calculator/health-calculator.component';
 
 const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'meal-planner', component: MealPlannerComponent },
   { path: 'health-calculator', component: HealthCalculatorComponent },
-  { path: 'progress', component: ProgressComponent },
+  { path: 'info', component: InfoComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'about', component: AboutComponent },

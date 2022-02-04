@@ -74,7 +74,7 @@ export class UserListComponent implements OnInit {
     //del.classList.toggle('is-active');
     //document.getElementById('delete-btn').addEventListener("click", () => {
       this.subscriptions.push(
-        this.userService.deleteUser(deleteUser.id).subscribe(
+        this.userService.deleteUser(deleteUser.email).subscribe(
           (response: CustomHttpResponse) => {
             console.log(response);
             this.notificationService.notify(NotificationType.SUCCESS, response.message);

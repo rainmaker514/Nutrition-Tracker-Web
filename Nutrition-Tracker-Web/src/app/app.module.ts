@@ -25,7 +25,7 @@ import { NotificationModule } from './notification.module';
 import { NotificationService } from './services/notification.service';
 import { MealPlannerComponent } from './pages/meal-planner/meal-planner.component';
 import { HealthCalculatorComponent } from './pages/health-calculator/health-calculator.component';
-import { ProgressComponent } from './pages/progress/progress.component';
+import { InfoComponent } from './pages/info/info.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { ProgressComponent } from './pages/progress/progress.component';
     UserListComponent,
     MealPlannerComponent,
     HealthCalculatorComponent,
-    ProgressComponent
+    InfoComponent
   ],
   imports: [
     BrowserModule,

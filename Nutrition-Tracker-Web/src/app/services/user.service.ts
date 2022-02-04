@@ -39,8 +39,8 @@ export class UserService {
    return this.http.put<User>(`${this.host}/users/change-password`, params);
  }
 
- deleteUser(id: number): Observable<CustomHttpResponse | HttpErrorResponse> {
-    return this.http.delete<CustomHttpResponse>(`${this.host}/users/delete/${id}`);
+ deleteUser(email: string): Observable<CustomHttpResponse | HttpErrorResponse> {
+    return this.http.delete<CustomHttpResponse>(`${this.host}/users/delete/${email}`);
  }
 
  addUsersToLocalCache(users: User[]): void {
