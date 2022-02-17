@@ -9,3 +9,10 @@
     left: 100px;
     position: relative;
 }
+
+span{
+    font-size: large;
+}
+.modal-card{
+    width: 400px
+}

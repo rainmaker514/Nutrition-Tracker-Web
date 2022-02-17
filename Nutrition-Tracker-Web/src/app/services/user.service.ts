@@ -39,6 +39,14 @@ export class UserService {
    return this.http.put<User>(`${this.host}/users/change-password`, params);
  }
 
+ changeStartingWeight(params: HttpParams): Observable<User>{
+  return this.http.put<User>(`${this.host}/users/change-starting-weight`, params);
+}
+
+changeCurrentWeight(params: HttpParams): Observable<User>{
+  return this.http.put<User>(`${this.host}/users/change-current-weight`, params);
+}
+
  deleteUser(email: string): Observable<CustomHttpResponse | HttpErrorResponse> {
     return this.http.delete<CustomHttpResponse>(`${this.host}/users/delete/${email}`);
  }

@@ -10,6 +10,7 @@ export class User {
     goal: string;
     role: string;
     authorities: [];
+    startingWeight: number;
   
     constructor(){
       this.firstname = '';
@@ -22,6 +23,7 @@ export class User {
       this.goal = '';
       this.role = '';
       this.authorities = [];
+      this.startingWeight = 0;
     }
   }
   
