@@ -1,0 +1,60 @@
+
+.hero{
+    background-image: url('/assets/img/bg1.jpg') !important;
+    background-size: cover;
+    background-position: center center;
+  }
+  
+  .input{
+    width: 100%;
+  
+  }
+  
+  #login {
+    top: 100px;
+    left: 100px;
+    position: relative;
+    color: whitesmoke;
+  }
+
+  .label{
+    color: whitesmoke;
+  }
+
+  .help{
+    color: red;
+  }
+
+  span{
+    color: whitesmoke;
+  }
+
+  #reset{
+    color: hsl(171, 100%, 41%);
+    transition: 0.4s;
+  }
+
+  #reset:hover{
+    text-decoration: underline;
+    color: hsl(171, 100%, 26%);
+  }
+
+  #signup{
+    color: hsl(171, 100%, 41%);
+    transition: 0.4s;
+  }
+
+  #signup:hover{
+    text-decoration: underline;
+    color: hsl(171, 100%, 26%);
+  }
+
+  .button{
+    transition: 0.4s;
+  }
+
+  .button:hover{
+    background-color: hsl(171, 100%, 26%);
+  }
+
+  

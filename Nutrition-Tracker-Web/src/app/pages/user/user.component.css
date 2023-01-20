@@ -1,0 +1,36 @@
+.hero{
+    background-image: url('/assets/img/bg5.jpg') !important;
+    background-size: cover;
+    background-position: center center;
+}
+
+#profile {
+    top: 100px;
+    left: 100px;
+    position: relative;
+  }
+
+  .label{
+    color: whitesmoke;
+  }
+
+  a{
+    color: hsl(171, 100%, 41%);
+    transition: 0.4s;
+  }
+
+  a:hover{
+    color: hsl(171, 100%, 26%);
+  }
+
+  .button{
+    transition: 0.4s;
+  }
+
+  .button:hover{
+    background-color: hsl(171, 100%, 26%);
+  }
+
+  .input{
+    background-color: rgb(47, 47, 47);
+  }

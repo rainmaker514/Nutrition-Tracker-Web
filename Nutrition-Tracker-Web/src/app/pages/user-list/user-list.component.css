@@ -1,0 +1,33 @@
+.hero{
+    background-image: url('/assets/img/bg6.jpg') !important;
+    background-size: cover;
+    background-position: center center;
+}
+
+#user-list {
+    top: 100px;
+    left: 100px;
+    position: relative;
+  }
+
+  #userListForm  {
+      
+      position: relative;
+  }
+
+ tbody:nth-child(even):hover{
+    background: #00d1b2;
+    color:white;
+    cursor: pointer;
+}
+
+tbody:nth-child(odd):hover{
+    background: #00d1b2;
+    color:white;
+    cursor: pointer;
+}
+
+#dropdown-item{
+    font-size: 16px;
+}
+
