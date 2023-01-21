@@ -10,7 +10,7 @@
                             <div class="field-body">
                                 <div class="column">
                                     <div class="field">
-                                        <label class="label">Firsname</label>
+                                        <label class="label">Firstname</label>
                                         <div class="control has-icons-left">
                                             <input style="color:whitesmoke" class="input is-rounded" type="text" name="firstname" [(ngModel)]="user.firstname" required>
                                                 <span class="icon is-small is-left">
@@ -102,7 +102,6 @@
                                         <div class="control has-icons-left">
                                             <div class="select is-rounded">
                                                 <select style="background-color: rgb(47, 47, 47); color:whitesmoke" name="activityLevel" [(ngModel)]="user.activityLevel">
-                                                    <option class="dropdown-item" disabled value="">Select activity level</option>
                                                     <option class="dropdown-item" selected value="">{{user.activityLevel}}</option>
                                                     <option [hidden]="user.activityLevel === 'Sedentary'" value="Sedentary">Sedentary</option>
                                                     <option [hidden]="user.activityLevel === 'Light'" value="Light">Light</option>
@@ -121,8 +120,7 @@
                                     <label class="label">Goal</label>
                                         <div class="control has-icons-left">
                                             <div class="select is-rounded">
-                                                <select name="goal"[(ngModel)]="user.goal">
-                                                    <option class="dropdown-item" disabled value="">Select goal</option>
+                                                <select style="background-color: rgb(47, 47, 47); color:whitesmoke" name="goal"[(ngModel)]="user.goal">
                                                     <option class="dropdown-item" selected value="">{{user.goal}}</option>
                                                     <option [hidden]="user.goal === 'Lose weight'" value="Lose weight">Lose weight</option>
                                                     <option [hidden]="user.goal === 'Maintain weight'" value="Maintain weight">Maintain weight</option>
@@ -137,7 +135,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <a onclick="changePasswordModal.classList.toggle('is-active')" style="text-decoration: underline;">Change Password</a>
+                            <a id="changePass" onclick="changePasswordModal.classList.toggle('is-active')">Change Password</a>
                         </div>
                     </div>
                         <div class="field">

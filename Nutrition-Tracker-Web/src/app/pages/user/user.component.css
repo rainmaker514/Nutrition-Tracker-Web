@@ -14,13 +14,14 @@
     color: whitesmoke;
   }
 
-  a{
+  #changePass{
     color: hsl(171, 100%, 41%);
     transition: 0.4s;
   }
 
-  a:hover{
+  #changePass:hover{
     color: hsl(171, 100%, 26%);
+    text-decoration: underline;
   }
 
   .button{
