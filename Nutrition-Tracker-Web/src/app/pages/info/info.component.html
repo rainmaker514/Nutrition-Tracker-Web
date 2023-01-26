@@ -1,6 +1,6 @@
 
 <div class="hero is-fullheight">
-    <h1 id="info" style="color: white;" class="title is-1">My Info</h1>
+    <h1 id="info" style="color: whitesmoke" class="title is-1">My Info</h1>
     <div class="hero-body">
         <div class="container">
             <div class="columns is-centered">
@@ -27,12 +27,13 @@
                                     </a>
                                 </li>
                             </ul>
+                            <button type="button" id="new-entry-btn" onclick="addNewEntryModal.classList.toggle('is-active')" class="button is-small is-primary"><fa-icon style="color: whitesmoke;" [icon]="faPlus"></fa-icon>&nbsp;New Entry</button>
                         </div>
                         <div class="content">
                             <!--My Progress tab-->
                             <div class="content-value" *ngIf="tabId === 'my-progress'">
                                 <h1 id="entries" class="title has-text-left is-6">Entries:</h1>
-                                <button id="addNewEntry" onclick="addNewEntryModal.classList.toggle('is-active')" class="button is-small is-primary"><fa-icon style="color: white;" [icon]="faPlus"></fa-icon>&nbsp;New Entry</button>
+                                
                                 <h1 *ngIf="user?.startingWeight === undefined; else start" class="title has-text-centered">0 lbs</h1> 
                                 <ng-template #start>
                                     <h1 class="title has-text-centered">

@@ -14,12 +14,15 @@
     color: whitesmoke;
   }
 
-  #changePass{
+  #change-pass-link{
     color: hsl(171, 100%, 41%);
     transition: 0.4s;
+    position: relative;
+    left: 20px;
+    top: 17px;
   }
 
-  #changePass:hover{
+  #change-pass-link:hover{
     color: hsl(171, 100%, 26%);
     text-decoration: underline;
   }

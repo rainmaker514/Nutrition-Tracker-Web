@@ -10,6 +10,14 @@
     position: relative;
 }
 
+h1{
+    color: whitesmoke;
+}
+
+p{
+    color: whitesmoke;
+}
+
 span{
     font-size: large;
     color: whitesmoke;
@@ -61,6 +69,19 @@ fa-icon{
 li:hover span fa-icon{
     color: whitesmoke;
 }
+
+#new-entry-btn{
+    transition: 0.4s;
+    position: relative;
+    top: 5px;
+}
+
+#new-entry-btn:hover{
+    background-color: hsl(171, 100%, 26%);
+}
+
+
+
 
 
 
