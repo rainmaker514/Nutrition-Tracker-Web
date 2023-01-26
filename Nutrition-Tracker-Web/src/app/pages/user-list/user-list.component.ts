@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { faClipboard, faDumbbell, faEdit, faEnvelope, faHourglass, faPlus, faRuler, faShieldAlt, faTrash, faUser, faWeight } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
@@ -38,6 +38,9 @@ export class UserListComponent implements OnInit {
   faEnvelope = faEnvelope;
   faShield = faShieldAlt;
   showLoading = false;
+
+  @ViewChild('addUserForm') public addUserForm : NgForm;
+
 
   constructor(private userService: UserService, private notificationService: NotificationService, private authenticationService: AuthenticationService) { }
 
@@ -186,5 +189,10 @@ export class UserListComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  onAddUserModalClose(): void{
+    document.getElementById('addUserModal').classList.toggle('is-active');
+    this.addUserForm.reset();
   }
 }

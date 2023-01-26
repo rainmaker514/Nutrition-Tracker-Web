@@ -12,7 +12,7 @@
                                     <div class="field">
                                         <label class="label">Firstname</label>
                                         <div class="control has-icons-left">
-                                            <input style="color:whitesmoke" class="input is-rounded" type="text" name="firstname" [(ngModel)]="user.firstname" required>
+                                            <input style="color:whitesmoke" class="input is-rounded is-primary" type="text" name="firstname" [(ngModel)]="user.firstname" required>
                                                 <span class="icon is-small is-left">
                                                     <fa-icon [icon]="faUser"></fa-icon>
                                                 </span>
@@ -23,7 +23,7 @@
                                     <div class="field">
                                         <label class="label">Lastname</label>
                                         <div class="control has-icons-left">
-                                            <input style="color:whitesmoke" class="input is-rounded" type="text" name="lastname" [(ngModel)]="user.lastname" required>
+                                            <input style="color:whitesmoke" class="input is-rounded is-primary" type="text" name="lastname" [(ngModel)]="user.lastname" required>
                                                 <span class="icon is-small is-left">
                                                     <fa-icon [icon]="faUser"></fa-icon>
                                                 </span>
@@ -38,7 +38,7 @@
                                     <div class="field">
                                         <label class="label">Email</label>
                                         <div class="control has-icons-left">
-                                            <input style="color:whitesmoke" class="input is-rounded" size="9" type="email" name="email" [(ngModel)]="user.email" required>
+                                            <input style="color:whitesmoke" class="input is-rounded is-primary" size="9" type="email" name="email" [(ngModel)]="user.email" required>
                                                 <span class="icon is-small is-left">
                                                     <fa-icon [icon]="faEnvelope"></fa-icon>
                                                 </span>
@@ -49,7 +49,7 @@
                                     <div class="field">
                                         <label class="label">Height</label>
                                         <div class="control has-icons-left">
-                                            <div class="select is-rounded">
+                                            <div class="select is-rounded is-primary">
                                                 <select style="background-color: rgb(47, 47, 47); color:whitesmoke" name="height" [(ngModel)]="user.height">
                                                     <option class="dropdown-item" selected value="">{{user.height}}</option>
                                                     <option [hidden]="user.height === height" *ngFor="let height of heightDropDown" [ngValue]="height">{{height}}</option>
@@ -70,7 +70,7 @@
                                     <label class="label">Weight</label>
                                         <div class="field has-addons">
                                             <div class="control has-icons-left">
-                                                <input style="color:whitesmoke" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" class="input is-rounded" type="number" name="weight" [(ngModel)]="user.weight"> 
+                                                <input style="color:whitesmoke" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" class="input is-rounded is-primary" type="number" name="weight" [(ngModel)]="user.weight"> 
                                                     <span class="icon is-small is-left">
                                                         <fa-icon [icon]="faWeight"></fa-icon>
                                                     </span>
@@ -85,7 +85,7 @@
                                 <div class="field">
                                     <label class="label">Age</label>
                                     <div class="control has-icons-left">
-                                        <input style="color:whitesmoke" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2" class="input is-rounded" type="number" name="age" [(ngModel)]="user.age">
+                                        <input style="color:whitesmoke" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2" class="input is-rounded is-primary" type="number" name="age" [(ngModel)]="user.age">
                                             <span class="icon is-small is-left">
                                                 <fa-icon [icon]="faHourglass"></fa-icon>
                                             </span>
@@ -100,7 +100,7 @@
                                     <div class="field">
                                         <label class="label">Activity Level</label>
                                         <div class="control has-icons-left">
-                                            <div class="select is-rounded">
+                                            <div class="select is-rounded is-primary">
                                                 <select style="background-color: rgb(47, 47, 47); color:whitesmoke" name="activityLevel" [(ngModel)]="user.activityLevel">
                                                     <option class="dropdown-item" selected value="">{{user.activityLevel}}</option>
                                                     <option [hidden]="user.activityLevel === 'Sedentary'" value="Sedentary">Sedentary</option>
@@ -119,7 +119,7 @@
                                 <div class="field">
                                     <label class="label">Goal</label>
                                         <div class="control has-icons-left">
-                                            <div class="select is-rounded">
+                                            <div class="select is-rounded is-primary">
                                                 <select style="background-color: rgb(47, 47, 47); color:whitesmoke" name="goal"[(ngModel)]="user.goal">
                                                     <option class="dropdown-item" selected value="">{{user.goal}}</option>
                                                     <option [hidden]="user.goal === 'Lose weight'" value="Lose weight">Lose weight</option>

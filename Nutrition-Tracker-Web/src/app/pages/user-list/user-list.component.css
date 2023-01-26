@@ -31,3 +31,45 @@ tbody:nth-child(odd):hover{
     font-size: 16px;
 }
 
+#addUser{
+    transition: 0.4s;
+}
+
+#addUser:hover{
+    background-color: hsl(171, 100%, 26%);
+}
+
+#deleteUser{
+    background-color: rgb(47, 47, 47);
+    transition: 0.4s;
+}
+
+#deleteUser:hover{
+    background-color: whitesmoke
+}
+
+#editUser{
+    background-color: rgb(47, 47, 47);
+    transition: 0.4s;
+}
+
+#editUser:hover{
+    background-color: whitesmoke
+}
+
+#save{
+    transition: 0.4s;
+}
+
+#save:hover{
+    background-color: hsl(171, 100%, 26%);
+}
+
+#addUserClose{
+    transition: 0.4s;
+}
+
+#addUserClose:hover{
+    background-color: rgb(197, 195, 195);
+}
+

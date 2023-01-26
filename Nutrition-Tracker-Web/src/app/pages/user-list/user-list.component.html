@@ -5,11 +5,11 @@
         <div class="container">
             <div class="columns is-centered">
                 <div class="column is-10">
-                    <form class="box" #searchForm="ngForm" style="margin-top: 100px;">
+                    <form class="box" #searchForm="ngForm" style="margin-top: 100px; background-color: rgb(47, 47, 47)">
                         <div class="field">
                             <div class="field-body">
                                 <div class="field">
-                                    <button [disabled] = "!isAdmin" class="button is-small is-primary" id="addUser" onclick="addUserModal.classList.toggle('is-active')"><fa-icon [icon]="faPlus"></fa-icon>&nbsp;Add User</button>
+                                    <button [disabled] = "!isAdmin" id="addUser" class="button is-small is-primary" id="addUser" onclick="addUserModal.classList.toggle('is-active')"><fa-icon [icon]="faPlus"></fa-icon>&nbsp;Add User</button>
                                 </div>
                                 <div class="field has-addons is-grouped is-grouped-right">
                                     <div class="control">
@@ -19,13 +19,13 @@
                                 </div>
                             </div>
                         </div>
-                        <table class="table is-striped is-hoverable is-fullwidth" id="table">
+                        <table style="background-color: rgb(47, 47, 47); color: whitesmoke" class="table is-striped is-hoverable is-fullwidth" id="table">
                             <thead>
                               <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>    
-                                <th>Actions</th>
+                                <th style="color: whitesmoke">First Name</th>
+                                <th style="color: whitesmoke">Last Name</th>
+                                <th style="color: whitesmoke">Email</th>    
+                                <th style="color: whitesmoke">Actions</th>
                               </tr>
                             </thead>
                             <tbody *ngFor="let user of users">
@@ -33,8 +33,7 @@
                                 <td (click)="onSelectUser(user)">{{user?.lastname}}</td>
                                 <td (click)="onSelectUser(user)">{{user?.email}}</td>
                                 <td class="">
-                                    <button class="button is-small" (click)="onEditUser(user)"
-                                    ><fa-icon style="color:#00d1b2"[icon]="faEdit"></fa-icon></button>
+                                    <button class="button is-small" id="editUser" (click)="onEditUser(user)"><fa-icon style="color:#00d1b2"[icon]="faEdit"></fa-icon></button>
                                     <button class="button is-small" id="deleteUser" (click)="onDeleteUser(user)"><fa-icon style="color:red" [icon]="faTrash"></fa-icon></button>
                                 </td>
                             </tbody>
@@ -305,19 +304,19 @@
                     <div class="modal animate__animated animate__fadeIn" id="addUserModal">
                         <div class="modal-background" onclick="addUserModal.classList.toggle('is-active')"></div>
                         <div class="modal-card">
-                            <header class="modal-card-head">
-                                <p class="modal-card-title">Add User</p>
+                            <header class="modal-card-head" style="background-color: hsl(171, 100%, 41%)">
+                                <p class="modal-card-title" style="color: whitesmoke">Add User</p>
                                 <button class="delete" aria-label="close" onclick="addUserModal.classList.toggle('is-active')"></button>
                             </header>
-                            <section class="modal-card-body">
+                            <section class="modal-card-body" style="background-color: rgb(47, 47, 47)">
                                 <form #addUserForm="ngForm" (ngSubmit)="onAddUser(addUserForm)">
                                     <div class="field">
                                         <div class="field-body">
                                             <div class="column">
                                                 <div class="field">
-                                                    <label class="label">Firstname</label>
+                                                    <label style="color: whitesmoke" class="label">Firstname</label>
                                                     <div class="control has-icons-left">
-                                                        <input class="input is-rounded" type="text" name="firstname" ngModel required>
+                                                        <input style="background-color: rgb(47, 47, 47); color: whitesmoke" class="input is-rounded is-primary" type="text" name="firstname" ngModel required>
                                                             <span class="icon is-small is-left">
                                                                 <fa-icon [icon]="faUser"></fa-icon>
                                                             </span>
@@ -326,9 +325,9 @@
                                             </div>
                                             <div class="column">
                                                 <div class="field">
-                                                    <label class="label">Lastname</label>
+                                                    <label style="color: whitesmoke" class="label">Lastname</label>
                                                     <div class="control has-icons-left">
-                                                        <input class="input is-rounded" type="text" name="lastname" ngModel required>
+                                                        <input style="background-color: rgb(47, 47, 47); color: whitesmoke" class="input is-rounded is-primary" type="text" name="lastname" ngModel required>
                                                             <span class="icon is-small is-left">
                                                                 <fa-icon [icon]="faUser"></fa-icon>
                                                             </span>
@@ -341,9 +340,9 @@
                                         <div class="field-body">
                                             <div class="column">
                                                 <div class="field">
-                                                    <label class="label">Email</label>
+                                                    <label style="color: whitesmoke" class="label">Email</label>
                                                     <div class="control has-icons-left">
-                                                        <input class="input is-rounded" size="9" type="email" name="email" ngModel required>
+                                                        <input style="background-color: rgb(47, 47, 47); color: whitesmoke" class="input is-rounded is-primary" size="9" type="email" name="email" ngModel required>
                                                             <span class="icon is-small is-left">
                                                                 <fa-icon [icon]="faEnvelope"></fa-icon>
                                                             </span>
@@ -357,11 +356,10 @@
                                         <div class="field-body">
                                             <div class="column">
                                                 <div class="field">
-                                                    <label class="label">Role</label>
+                                                    <label style="color: whitesmoke" class="label">Role</label>
                                                     <div class="control has-icons-left">
-                                                        <div class="select is-rounded">
-                                                            <select name="role" required ngModel="ROLE_USER">
-                                                                <option class="dropdown-item" ngDefaultControl selected disabled value="">Select Role</option>
+                                                        <div class="select is-rounded is-primary">
+                                                            <select style="background-color: rgb(47, 47, 47); color: whitesmoke" name="role" required ngModel="ROLE_USER">
                                                                 <option value="ROLE_USER">USER</option>
                                                                 <option value="ROLE_ADMIN">ADMIN</option>
                                                             </select>
@@ -382,12 +380,12 @@
                                 
                                 </form>
                             </section>
-                            <footer class="modal-card-foot">
-                                <button class="button is-success" [disabled]="addUserForm.invalid || showLoading" (click)="saveNewUser()">
+                            <footer class="modal-card-foot" style="background-color: rgb(47, 47, 47)">
+                                <button id="save" class="button is-primary" [disabled]="addUserForm.invalid || showLoading" (click)="saveNewUser()">
                                     <span *ngIf="showLoading">Please wait...</span>
                                     <span *ngIf="!showLoading">Save Changes</span>    
                                 </button>
-                                <button class="button" id="addUserClose" [disabled]="addUserForm.invalid" onclick="addUserModal.classList.toggle('is-active')">Cancel</button>
+                                <button class="button" id="addUserClose" (click)="onAddUserModalClose()">Cancel</button>
                             </footer>
                         </div>
                     </div>
