@@ -11,7 +11,12 @@ a{
 }
 
 .navbar-dropdown .navbar-item:hover{
-    background-color: rgb(68, 68, 68);
+    background-color: hsl(171, 100%, 41%);
+    color: whitesmoke;
+}
+
+.navbar-dropdown .navbar-item:focus{
+    background-color: hsl(171, 100%, 41%);
     color: whitesmoke;
 }
 
