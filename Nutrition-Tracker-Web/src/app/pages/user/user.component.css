@@ -10,7 +10,7 @@
     position: relative;
   }
 
-  .label{
+  .label, p{
     color: whitesmoke;
   }
 
@@ -36,5 +36,13 @@
   }
 
   .input{
+    background-color: rgb(47, 47, 47);
+  }
+
+  header{
+    background-color: hsl(171, 100%, 41%);
+  }
+
+  section, footer{
     background-color: rgb(47, 47, 47);
   }

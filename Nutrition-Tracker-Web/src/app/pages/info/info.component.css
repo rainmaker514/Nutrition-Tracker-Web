@@ -73,11 +73,20 @@ li:hover span fa-icon{
 #new-entry-btn{
     transition: 0.4s;
     position: relative;
-    top: 5px;
+    bottom: 360px;
+    left: 625px
 }
 
 #new-entry-btn:hover{
     background-color: hsl(171, 100%, 26%);
+}
+
+section, footer{
+    background-color: rgb(47, 47, 47)
+}
+
+header{
+    background-color: hsl(171, 100%, 41%);
 }
 
 

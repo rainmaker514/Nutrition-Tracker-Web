@@ -17,7 +17,7 @@
     color: whitesmoke;
   }
 
-  .label{
+  .label, span{
     color: whitesmoke;
   }
 
@@ -25,26 +25,12 @@
     color: red;
   }
 
-  span{
-    color: whitesmoke;
-  }
-
-  #reset{
+  #signup, #reset{
     color: hsl(171, 100%, 41%);
     transition: 0.4s;
   }
 
-  #reset:hover{
-    text-decoration: underline;
-    color: hsl(171, 100%, 26%);
-  }
-
-  #signup{
-    color: hsl(171, 100%, 41%);
-    transition: 0.4s;
-  }
-
-  #signup:hover{
+  #signup:hover, #reset:hover{
     text-decoration: underline;
     color: hsl(171, 100%, 26%);
   }

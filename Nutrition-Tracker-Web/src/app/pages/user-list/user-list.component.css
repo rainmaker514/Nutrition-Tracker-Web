@@ -10,18 +10,9 @@
     position: relative;
   }
 
-  #userListForm  {
-      
-      position: relative;
-  }
+  
 
- tbody:nth-child(even):hover{
-    background: #00d1b2;
-    color:white;
-    cursor: pointer;
-}
-
-tbody:nth-child(odd):hover{
+ tbody:nth-child(even):hover, tbody:nth-child(odd):hover{
     background: #00d1b2;
     color:white;
     cursor: pointer;
@@ -39,21 +30,12 @@ tbody:nth-child(odd):hover{
     background-color: hsl(171, 100%, 26%);
 }
 
-#deleteUser{
+#deleteUser, #editUser{
     background-color: rgb(47, 47, 47);
     transition: 0.4s;
 }
 
-#deleteUser:hover{
-    background-color: whitesmoke
-}
-
-#editUser{
-    background-color: rgb(47, 47, 47);
-    transition: 0.4s;
-}
-
-#editUser:hover{
+#editUser:hover, #deleteUser:hover{
     background-color: whitesmoke
 }
 
