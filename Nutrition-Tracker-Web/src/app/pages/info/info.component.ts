@@ -98,6 +98,29 @@ export class InfoComponent implements OnInit {
     );
   }
 
+  onCreateNewEntry(createNewEntryForm: NgForm): void{
+    const entry = createNewEntryForm.value['entry'];
+    const email = this.user.email;
+    let params = new HttpParams()
+    .set('email', email)
+    .set('startingWeight', startingWeight);
+    
+    this.subscriptions.push(
+      this.userService.changeStartingWeight(params).subscribe(
+        (response: User) => {
+          this.authenticationService.addUserToLocalCache(response);
+          this.user = this.authenticationService.getUserFromLocalCache();
+          this.notificationService.notify(NotificationType.SUCCESS, "Weight changed.");
+          document.getElementById('close-btn').click();
+          
+        },
+        (error: HttpErrorResponse) => {
+          this.notificationService.notify(NotificationType.WARNING, error.error.message);
+        },
+        () => changeStartingWeightForm.reset()
+      )
+    );
+  }
 }
 
 

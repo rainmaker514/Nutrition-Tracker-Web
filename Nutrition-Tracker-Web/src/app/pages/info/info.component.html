@@ -122,15 +122,15 @@
 </div>
 
 <!--new entry modal-->
-<div class="modal animate__animated animate__fadeIn" id="addNewEntryModal">
-    <div class="modal-background" onclick="startingWeightModal.classList.toggle('is-active')"></div>
+<div class="modal animate__animated animate__fadeIn" id="createNewEntryModal">
+    <div class="modal-background" onclick="createNewEntryModal.classList.toggle('is-active')"></div>
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title">Create New Entry</p>
-            <button class="delete" aria-label="close" id="close" onclick="startingWeightModal.classList.toggle('is-active')"></button>
+            <button class="delete" aria-label="close" id="close" onclick="createNewEntryModal.classList.toggle('is-active')"></button>
         </header>
         <section class="modal-card-body">
-             <form #changeStartingWeightForm="ngForm" (ngSubmit)="onChangeStartingWeight(changeStartingWeightForm)">
+             <form #createNewEntryForm="ngForm" (ngSubmit)="onCreateNewEntry(createNewEntryForm)">
                 <div class="field">
                     <label class="label">Starting Weight:</label>
                     <input class="input is-rounded"  type="number" name="startingWeight" required ngModel>
@@ -141,10 +141,10 @@
         </section>
         <footer class="modal-card-foot">
     
-                    <button [disabled]="changeStartingWeightForm.invalid" onclick="document.getElementById('chn-btn').click()" class="button is-primary">
-                        <span>Change</span>
+                    <button [disabled]="createNewEntryModal.invalid" onclick="document.getElementById('chn-btn').click()" class="button is-primary">
+                        <span>Create</span>
                     </button>
-                    <button onclick="startingWeightModal.classList.toggle('is-active')" id="close-btn" class="button">Close</button>
+                    <button onclick="createNewEntryModal.classList.toggle('is-active')" id="close-btn" class="button">Close</button>
                 
         </footer>
     </div>
