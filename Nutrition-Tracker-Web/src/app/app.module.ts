@@ -49,7 +49,7 @@ import { InfoComponent } from './pages/info/info.component';
     FontAwesomeModule,
     CommonModule,
     BrowserAnimationsModule,
-    NotificationModule
+    NotificationModule,
   ],
   providers: [NotificationService, UserService, ContactService, AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

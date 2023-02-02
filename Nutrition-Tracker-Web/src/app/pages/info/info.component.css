@@ -10,11 +10,7 @@
     position: relative;
 }
 
-h1{
-    color: whitesmoke;
-}
-
-p{
+p, label, h1{
     color: whitesmoke;
 }
 
@@ -34,31 +30,12 @@ span{
     display: inline;
 }
 
-
-#progress-tab{
+#progress-tab, #food-tab, #notes-tab {
     background-color: rgb(47, 47, 47);
     transition: 0.4s;
 }
 
-#progress-tab:hover{
-    background-color: hsl(171, 100%, 41%);
-}
-
-#food-tab{
-    background-color: rgb(47, 47, 47);
-    transition: 0.4s;
-}
-
-#food-tab:hover{
-    background-color: hsl(171, 100%, 41%);
-}
-
-#notes-tab{
-    background-color: rgb(47, 47, 47);
-    transition: 0.4s;
-}
-
-#notes-tab:hover{
+#progress-tab:hover, #food-tab:hover, #notes-tab:hover, header{
     background-color: hsl(171, 100%, 41%);
 }
 
@@ -81,13 +58,22 @@ li:hover span fa-icon{
     background-color: hsl(171, 100%, 26%);
 }
 
-section, footer{
+section, footer, .input{
     background-color: rgb(47, 47, 47)
 }
 
-header{
-    background-color: hsl(171, 100%, 41%);
+.field{
+    position: relative;
+    left: 10px
 }
+
+#date{
+    position: relative;
+    bottom: 5px;
+}
+
+
+
 
 
 

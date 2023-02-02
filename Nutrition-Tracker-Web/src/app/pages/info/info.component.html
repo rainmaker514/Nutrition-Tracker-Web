@@ -47,7 +47,7 @@
                                 <p align="center">
                                     <a onclick="currentWeightModal.classList.toggle('is-active')">Change</a>
                                 </p>
-                                <button type="button" id="new-entry-btn" onclick="addNewEntryModal.classList.toggle('is-active')" class="button is-small is-primary"><fa-icon style="color: whitesmoke;" [icon]="faPlus"></fa-icon>&nbsp;New Entry</button>
+                                <button type="button" id="new-entry-btn" onclick="createNewEntryModal.classList.toggle('is-active')" class="button is-small is-primary"><fa-icon style="color: whitesmoke;" [icon]="faPlus"></fa-icon>&nbsp;New Entry</button>
                             </div>
                             <div class="content-value" *ngIf="tabId === 'my-food'">
                                 <p>my food</p>
@@ -132,16 +132,29 @@
         <section class="modal-card-body">
              <form #createNewEntryForm="ngForm" (ngSubmit)="onCreateNewEntry(createNewEntryForm)">
                 <div class="field">
-                    <label class="label">Starting Weight:</label>
-                    <input class="input is-rounded"  type="number" name="startingWeight" required ngModel>
-                </div>
-                <button type="submit" style="display: none;" id="chn-btn"></button>
+                    <label class="label">Pick a date</label>
+                    <input id="date" type="date" required ngModel>
+                    
+                    <label class="label">Weight</label>
+                        <div class="field has-addons">
+                            <div class="control has-icons-left">
+                                <input style="color:whitesmoke" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" class="input is-rounded is-primary" type="number" name="weight" required ngModel> 
+                                    <span class="icon is-small is-left">
+                                        <fa-icon [icon]="faWeight"></fa-icon>
+                                    </span>
+                            </div>
+                        <p class="control">
+                            <a style="background-color: rgb(47, 47, 47); color:whitesmoke" class="button is-static">lbs</a>
+                        </p>
+                        </div>  
+                    </div>
+                <button type="submit" style="display: none;" id="create-btn"></button>
              </form>
             
         </section>
         <footer class="modal-card-foot">
     
-                    <button [disabled]="createNewEntryModal.invalid" onclick="document.getElementById('chn-btn').click()" class="button is-primary">
+                    <button [disabled]="createNewEntryForm.invalid" onclick="document.getElementById('create-btn').click()" class="button is-primary">
                         <span>Create</span>
                     </button>
                     <button onclick="createNewEntryModal.classList.toggle('is-active')" id="close-btn" class="button">Close</button>

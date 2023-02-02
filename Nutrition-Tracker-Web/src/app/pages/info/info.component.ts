@@ -2,9 +2,10 @@ import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faHamburger, faStickyNote, faTasks, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faHamburger, faStickyNote, faTasks, faPlus, faWeight } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { NotificationType } from 'src/app/enum/notification-type.enum';
+import { Entry } from 'src/app/models/entry';
 import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -22,6 +23,7 @@ export class InfoComponent implements OnInit {
 
   faTasks = faTasks;
   faHamburger = faHamburger;
+  faWeight = faWeight;
   faStickyNote = faStickyNote;
   faPlus = faPlus;
   tabId = "my-progress";
@@ -99,25 +101,28 @@ export class InfoComponent implements OnInit {
   }
 
   onCreateNewEntry(createNewEntryForm: NgForm): void{
-    const entry = createNewEntryForm.value['entry'];
-    const email = this.user.email;
+    const weight = createNewEntryForm.value['weight'];
+    const userId = this.user.id;
+    let date: Date = new Date();
+    
     let params = new HttpParams()
-    .set('email', email)
-    .set('startingWeight', startingWeight);
+    .set('userId', userId)
+    .set('date', date.toLocaleString())
+    .set('weight', weight);
     
     this.subscriptions.push(
-      this.userService.changeStartingWeight(params).subscribe(
-        (response: User) => {
-          this.authenticationService.addUserToLocalCache(response);
-          this.user = this.authenticationService.getUserFromLocalCache();
-          this.notificationService.notify(NotificationType.SUCCESS, "Weight changed.");
+      this.userService.createNewEntry(params).subscribe(
+        (response: Entry) => {
+          //this.authenticationService.addUserToLocalCache(response);
+          //this.user = this.authenticationService.getUserFromLocalCache();
+          this.notificationService.notify(NotificationType.SUCCESS, "Entry added.");
           document.getElementById('close-btn').click();
           
         },
         (error: HttpErrorResponse) => {
           this.notificationService.notify(NotificationType.WARNING, error.error.message);
         },
-        () => changeStartingWeightForm.reset()
+        () => createNewEntryForm.reset()
       )
     );
   }
