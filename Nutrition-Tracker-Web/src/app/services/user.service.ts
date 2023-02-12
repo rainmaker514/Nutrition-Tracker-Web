@@ -6,7 +6,6 @@ import { Observable } from 'rxjs/internal/Observable';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { CustomHttpResponse } from '../models/custom-http-response';
 import { NgForm } from '@angular/forms';
-import { Entry } from '../models/entry';
 
 
 @Injectable()
