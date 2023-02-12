@@ -102,13 +102,18 @@ export class InfoComponent implements OnInit {
 
   onCreateNewEntry(createNewEntryForm: NgForm): void{
     const weight = createNewEntryForm.value['weight'];
-    const userId = this.user.id;
-    let date: Date = new Date();
+    const date = createNewEntryForm.value['date'];
+    //todo pass user and entry info under User type instead of entry. backend needs to know which user its saving the entry under
     
     let params = new HttpParams()
-    .set('userId', userId)
+    .set('user', this.user.toString())
     .set('date', date.toLocaleString())
     .set('weight', weight);
+
+    
+
+    console.log(this.user);
+    
     
     this.subscriptions.push(
       this.userService.createNewEntry(params).subscribe(

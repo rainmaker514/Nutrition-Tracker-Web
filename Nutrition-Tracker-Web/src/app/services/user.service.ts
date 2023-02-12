@@ -75,15 +75,11 @@ changeCurrentWeight(params: HttpParams): Observable<User>{
    formData.append('activityLevel', user.activityLevel);
    formData.append('goal', user.goal);
    formData.append('role', user.role);
-
+  
    return formData;
  }
 
  createEmailPasswordFormData(){
 
- }
-
- createNewEntry(params: HttpParams): Observable<Entry>{
-  return this.http.put<Entry>(`${this.host}/users/add-new-entry`, params);
  }
 }

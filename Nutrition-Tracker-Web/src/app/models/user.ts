@@ -11,8 +11,10 @@ export class User {
     role: string;
     authorities: [];
     startingWeight: number;
+    entries: [];
   
     constructor(){
+      this.id = 0;
       this.firstname = '';
       this.lastname = '';
       this.email = '';
@@ -24,6 +26,7 @@ export class User {
       this.role = '';
       this.authorities = [];
       this.startingWeight = 0;
+      this.entries = [];    
     }
   }
   

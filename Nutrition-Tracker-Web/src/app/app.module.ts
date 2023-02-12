@@ -25,6 +25,7 @@ import { NotificationService } from './services/notification.service';
 import { MealPlannerComponent } from './pages/meal-planner/meal-planner.component';
 import { HealthCalculatorComponent } from './pages/health-calculator/health-calculator.component';
 import { InfoComponent } from './pages/info/info.component';
+import { EntryService } from './services/entry.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { InfoComponent } from './pages/info/info.component';
     BrowserAnimationsModule,
     NotificationModule,
   ],
-  providers: [NotificationService, UserService, ContactService, AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [EntryService, NotificationService, UserService, ContactService, AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
